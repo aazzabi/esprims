@@ -1,0 +1,22 @@
+Claim check<br>
+<form [formGroup]="getStatusFrom">
+  <input type="text" formControlName="claimCode">
+  <button (click)="getClaimStatus()" [disabled]="!getStatusFrom.valid">Consulter</button>
+</form>
+{{status}}
+
+<div class="col-sm-6 offset-md-3 order-xl-1">
+  <div  class="card bg-secondary shadow">
+    <div class="card-header bg-white border-0">
+      <div class="row align-items-center">
+        <div class="col-8"><h3 class="mb-0">Saisissez le code de votre réclamation</h3></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="getStatusFrom">
+        <input type="text" formControlName="claimCode" class="form-control form-control-alternative">
+        <button (click)="getClaimStatus()" [disabled]="!getStatusFrom.valid" class="btn btn-primary my-4" >Consulter</button>
+      </form>
+    </div>
+  </div>
+</div>
