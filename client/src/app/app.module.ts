@@ -20,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {RoleGuard} from './services/security/role.guard';
 import {CommonModule} from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import {EventService} from './services/managers/event.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   providers: [
     LoginService,
+    EventService,
     RoleGuard,
     {
       provide: HTTP_INTERCEPTORS,
