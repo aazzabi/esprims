@@ -10,30 +10,27 @@ export class RoleGuard implements CanActivate {
   constructor(
     private router: Router,
   ) {}
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
-    if (localStorage.getItem('userToken') != null) {
-      const roles = next.data['roles'] as Array<string>;
-      if (roles) {
-        // const match = this.userService.roleMatch(roles);
-        const user = StorageService.get('currentUser');
-        const match = roles.find(ob => ob === user.role);
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (!StorageService.get('userToken')) {
+      const rolesAllowed = next.data.roles as Array<string>;
+      const user = StorageService.get('currentUser');
+      if (rolesAllowed) {
+        // check if user is allowed
+        const match = rolesAllowed.find(ob => ob === user.role);
         if (match != null) {
+          console.log('maatch true' + match);
           return true;
         } else {
-          // tslint:disable-next-line: quotemark
-          // this.toastr.info("You don't have access to this page");
-          this.router.navigate(['/login']);
-          // this.router.navigate(['/forbidden']);
+          console.log('maatch false');
+          this.router.navigate(['/']);
           return false;
         }
       } else {
-        return true;
+        this.router.navigate(['/']);
       }
+    } else {
+      this.router.navigate(['/login']);
     }
-    this.router.navigate(['/login']);
     return false;
   }
 }

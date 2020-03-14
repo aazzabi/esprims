@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Tokens} from '../../models/Tokens';
 import { map } from 'rxjs/operators';
 import { StorageService } from './storage.service';
 import {environment} from '../../../environments/environment';
+import {User} from '../../models/User';
 
 const httpOptions =  {
   headers: new HttpHeaders({
@@ -17,11 +18,21 @@ const httpOptions =  {
   providedIn: 'root'
 })
 export class LoginService {
-  apiUrl = '/prisma-crm-web/users/login';
-  apiUrl2 = 'http://localhost:9080/prisma-crm-web/users/login';
 
   constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
   }
+
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+  }
+
+  public static loggedUserId: number;
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
+  apiUrl = '/prisma-crm-web/users/login';
+  apiUrl2 = 'http://localhost:9080/prisma-crm-web/users/login';
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private loggedUser: string;
   public token: string;
@@ -41,7 +52,6 @@ export class LoginService {
           // console.log(JSON.parse(response));
           const response = JSON.parse(objectJson);
           const tooook = response.token;
-          console.log(tooook);
 
           // login successful if there's a jwt token in the response
           const t = response && response['token'];
@@ -68,7 +78,9 @@ export class LoginService {
   }
 
   logout() {
-    return this.http.get(environment.apiEndpoint + '/prisma-crm-web/users/logout');
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
   }
 
   isLoggedIn() {
@@ -96,6 +108,4 @@ export class LoginService {
   private removeTokens() {
     localStorage.removeItem(this.JWT_TOKEN);
   }
-
-
 }

@@ -17,12 +17,13 @@ import {FrontModule} from './front/front.module';
 import {BackModule} from './back/back.module';
 import {AuthIntercepter} from './services/security/auth.intercepter';
 import { ReactiveFormsModule } from '@angular/forms';
-import {RoleGuard} from "./services/security/role.guard";
+import {RoleGuard} from './services/security/role.guard';
 import {CommonModule} from '@angular/common';
-
+import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   imports: [
     CommonModule,
+    BrowserModule,
     FrontModule,
     BackModule,
     BrowserAnimationsModule,
