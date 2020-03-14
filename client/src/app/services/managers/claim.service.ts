@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import {Observable} from 'rxjs';
 
 @Injectable()
 export class ClaimService {
@@ -17,7 +16,7 @@ export class ClaimService {
   getClaimById(id: number) {
     return this.http.get('/dashboard/reclamation/id/' + id);
   }
-  
+
   getStatudClaimByCode(id: string) {
     return this.http.get('http://localhost:9080/prisma-crm-web/reclamation/code/' + id)
     .pipe(map( response => {

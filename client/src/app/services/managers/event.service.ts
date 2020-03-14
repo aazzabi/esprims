@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {Event} from "../../models/Event";
+import {Event} from '../../models/Event';
 
 const httpOptions = {
   headers: new HttpHeaders({

@@ -1,5 +1,3 @@
-import {Address } from './Address';
-
 export class User {
 
   public id: number;
@@ -12,6 +10,5 @@ export class User {
   public passwordLastChanged: Date;
   public phoneNumber: string;
   public confirmationToken: string;
-  public address: Address;
 
 }
