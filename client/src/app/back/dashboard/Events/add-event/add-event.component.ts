@@ -19,7 +19,7 @@ export class AddEventComponent implements OnInit {
   public picturemap: string;
 
   event: Event = {
-    id: "",
+    _id: "",
     title: "",
     date_event: null,
     description: "",
