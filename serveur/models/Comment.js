@@ -7,10 +7,7 @@ const CommentSchema = new mongoose.Schema({
     name: String,
     avatar: String
   },
-  topic: {
-    type: Number,
-    require: true
-  },
+  topic: { type: mongoose.Schema.Types.ObjectId, ref: 'Topic', required: false },
   text: {
     type: String,
     require: true

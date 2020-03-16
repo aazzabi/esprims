@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/byid/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
     if (event) return res.json(event);

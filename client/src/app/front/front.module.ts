@@ -9,6 +9,7 @@ import {UsersService} from '../services/managers/users.service';
 import {BrowserModule} from '@angular/platform-browser';
 import { ForumTopicsComponent } from './forum/forum-topics/forum-topics.component';
 import { SingleTopicComponent } from './forum/single-topic/single-topic.component';
+import {GetTopicResolvers} from '../services/resolvers/get.topic.resolvers';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SingleTopicComponent } from './forum/single-topic/single-topic.componen
     ClaimModule,
   ],
   declarations: [ FrontComponent, HomeComponent, ForumTopicsComponent, SingleTopicComponent ],
-  providers:[
+  providers: [
+    GetTopicResolvers,
     UsersService,
   ]
 })

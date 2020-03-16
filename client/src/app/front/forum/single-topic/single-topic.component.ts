@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { CommentService } from "src/app/services/CommentService";
-import { Router, ActivatedRoute, ParamMap } from "@angular/router";
-import { UserServices } from "src/app/services/UserServices";
+import {Component, OnInit} from "@angular/core";
+import {CommentService} from "src/app/services/CommentService";
+import {Router, ActivatedRoute, ParamMap} from "@angular/router";
+import {UserServices} from "src/app/services/UserServices";
 
 @Component({
   selector: "app-single-topic",
@@ -21,6 +21,7 @@ export class SingleTopicComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+
     console.log("ID USER", localStorage["id"]);
 
     console.log("this.user_connected_id ", this.user_connected_id);
@@ -36,7 +37,8 @@ export class SingleTopicComponent implements OnInit {
     this.user_connected_id = localStorage["id"];
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+  }
 
   getComments() {
     this.commentService.getCommentsPerTopic().subscribe(
@@ -46,6 +48,7 @@ export class SingleTopicComponent implements OnInit {
       response => console.log(response.statusText)
     );
   }
+
   addComment(comment) {
     let MyData = {
       user: {
@@ -61,6 +64,7 @@ export class SingleTopicComponent implements OnInit {
       this.getComments();
     });
   }
+
   deleteComment(id) {
     this.commentService.deleteComment(id).subscribe(data => {
       console.log(data);
