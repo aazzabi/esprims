@@ -16,8 +16,10 @@ export class FrontComponent {
   private userLogged: any;
 
   constructor(private router: Router, private userService: UserServices) {
-    this.userLogged = StorageService.get('currentUser');
-    console.log(this.userService.decodeToken());
+    if (StorageService.get('currentUser')) {
+      this.userLogged = StorageService.get('currentUser');
+      console.log(this.userService.decodeToken());
+    }
     this.showDropdown();
   }
 

@@ -55,5 +55,8 @@
     "twig": "^1.13.2",
     "twilio": "^3.11.1",
     "twilio-video": "1.12.0"
+  },
+  "devDependencies": {
+    "https-proxy-agent": "^5.0.0"
   }
 }
