@@ -1,26 +1,33 @@
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
-import {AppComponent} from './app.component';
-import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
-import {AuthLayoutComponent} from './layouts/auth-layout/auth-layout.component';
+import { AppComponent } from "./app.component";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
-import {ROUTING} from './app.routing';
+import { ROUTING } from "./app.routing";
 // import {ComponentsModule} from './components/components.module';
-import {LoginService} from './services/security/login.service';
-import {StorageServiceModule} from 'angular-webstorage-service';
-import {FrontModule} from './front/front.module';
-import {BackModule} from './back/back.module';
-import {AuthIntercepter} from './services/security/auth.intercepter';
-import { ReactiveFormsModule } from '@angular/forms';
-import {RoleGuard} from './services/security/role.guard';
-import {CommonModule} from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import {EventService} from './services/managers/event.service';
+import { LoginService } from "./services/security/login.service";
+import { StorageServiceModule } from "angular-webstorage-service";
+import { FrontModule } from "./front/front.module";
+import { BackModule } from "./back/back.module";
+import { AuthIntercepter } from "./services/security/auth.intercepter";
+import { ReactiveFormsModule } from "@angular/forms";
+import { RoleGuard } from "./services/security/role.guard";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { EventService } from "./services/managers/event.service";
+
+import { ImageUploadModule } from "./SharedComponent/image-upload/image-upload.module";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireStorageModule } from "@angular/fire/storage";
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { environment } from "../environments/environment";
+import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 
 @NgModule({
   imports: [
@@ -34,13 +41,15 @@ import {EventService} from './services/managers/event.service';
     NgbModule,
     ROUTING,
     StorageServiceModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    ImageUploadModule,
+
   ],
-  declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-    AuthLayoutComponent
-  ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [
     LoginService,
     EventService,
@@ -53,5 +62,4 @@ import {EventService} from './services/managers/event.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}

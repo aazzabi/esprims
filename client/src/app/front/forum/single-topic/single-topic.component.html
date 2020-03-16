@@ -1,0 +1,100 @@
+<app-front> </app-front>
+<section class="section bg-secondary">
+  <br />
+  <br />
+  <br />
+  <div class="container">
+    <div class="row row-grid align-items-center">
+      <div class="col-md-6">
+        <div class="card bg-default shadow border-0">
+          <img
+            src="../../../../assets/nidhal/assets/img/bg-img/game2.jpg"
+            class="card-img-top"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="pl-md-5">
+          <h3 class="h4 text-default font-weight-bold mb-4">
+            topic name
+            <small class="d-block"> Topic Title </small>
+            <small class="d-block"> <i class="fa fa-eye"></i> nb seen </small>
+          </h3>
+          <p class="lead">description</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-components">
+  <div class="container">
+    <!-- comments -->
+    <br />
+    <br />
+    <br />
+    <h5 class="text-primary">
+      9 comments &nbsp; <i class="fa fa-comment"></i>
+    </h5>
+
+    <div *ngFor="let comment of data">
+      <ng-container *ngIf="comment.topic == num_topic">
+        <div class="row py-3 align-items-center">
+          <div class="col-sm-1">
+            <img
+              src="{{ comment.user.avatar }}"
+              alt="Circle image"
+              class="img-fluid rounded-circle shadow"
+              style="width: 150px;"
+            />
+            <br />
+            &nbsp;
+            <small class="d-block text-uppercase font-weight-bold mb-4">
+              {{ comment.user.name }}
+            </small>
+          </div>
+          <div class="col-sm-9">
+            <p>
+              {{ comment.text }}
+            </p>
+            <ng-container *ngIf="comment.user.id === user_connected_id">
+              <button class="text-warning" (click)="deleteComment(comment._id)">delete</button>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+<section class="section section-lg pt-0">
+
+    <div class="container">
+      <div class="card bg-gradient-warning shadow-lg border-0">
+        <div class="p-5">
+          <form>
+            <div class="row align-items-center">
+              <div class="col-lg-8">
+                <h3 class="text-white">
+                  Write a response &nbsp; <i class="fa fa-reply"></i>
+                </h3>
+
+                <textarea
+                  class="form-control form-control-alternative"
+                  name="post"
+                  #post
+                  rows="4"
+                  cols="80"
+                  placeholder="Response .."
+                ></textarea>
+              </div>
+              <div class="col-lg-3 ml-lg-auto">
+                <button type="button" class="btn btn-lg btn-block btn-white"(click)="addComment(post.value)">
+                  Send
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+=
+</section>

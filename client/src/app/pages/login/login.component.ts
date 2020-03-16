@@ -1,35 +1,44 @@
-import {Component, OnInit, OnDestroy, Inject} from '@angular/core';
-import {LoginService} from '../../services/security/login.service';
-import {Router} from '@angular/router';
-import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Router } from "@angular/router";
+import { UserServices } from "src/app/services/UserServices";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit, OnDestroy {
   model: any = {};
   public data: any = [];
-
   errorMessage: string;
-  // , @Inject(LOCAL_STORAGE) private storage: WebStorageService
-  constructor(private loginService: LoginService, private router: Router) {
+
+  constructor(private userServices: UserServices, private router: Router) {
+    localStorage["id"] = null;
+    localStorage["name"] = null;
+    localStorage["avatar"] = null;
+    localStorage["role"] = null;
+    localStorage["token"] = null;
   }
   ngOnInit() {
+    console.log("now the user is ", localStorage.getItem("token"));
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   Login() {
-    this.loginService.login(this.model.email, this.model.password)
-      .subscribe(
-        (response: any) => {
-                console.log(response);
-                this.router.navigate(['dash']);
-            } ,
-      error => console.log(error)
+    this.userServices.auth(this.model.email, this.model.password).subscribe(
+      (response: any) => {
+        if (response.token) {
+          localStorage["id"] = response.user._id;
+          localStorage["name"] = response.user.name;
+          localStorage["avatar"] = response.user.avatar;
+          localStorage["role"] = response.user.role;
+          localStorage["token"] = response.user.token;
+          if (response.user.role == "ADMIN") this.router.navigate(["/dash"]);
+          if (response.user.role == "CLIENT") this.router.navigate(["/"]);
+        }
+      },
+      response => console.log(response.statusText)
     );
   }
 }

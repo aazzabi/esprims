@@ -247,7 +247,7 @@ img {
   position: relative;
   z-index: 2; }
   .bg-pattern::after {
-    background-image: url(../img/core-img/pattern.png);
+   /* background-image: url(../img/core-img/pattern.png);*/
     background-repeat: repeat;
     content: '';
     position: absolute;
@@ -607,7 +607,7 @@ img {
   z-index: 1;
   background-color: #0c0c0c;
   border-top: 1px solid #fff;
-  background-image: url(../img/core-img/pattern.png);
+ /* background-image: url(../img/core-img/pattern.png);*/
   background-repeat: repeat; }
   .footer-area .single-footer-widget {
     position: relative;
@@ -1154,7 +1154,7 @@ img {
     left: 1110px;
     content: '';
     background-color: rgba(14, 14, 14, 0.8);
-    background-image: url(../img/core-img/pattern.png);
+   /* background-image: url(../img/core-img/pattern.png);*/
     z-index: 6000; }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .left-right-pattern::after {
@@ -1173,7 +1173,7 @@ img {
     left: -1110px;
     content: '';
     background-color: rgba(14, 14, 14, 0.8);
-    background-image: url(../img/core-img/pattern.png);
+    /*background-image: url(../img/core-img/pattern.png);*/
     z-index: 6000; }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .left-right-pattern::before {

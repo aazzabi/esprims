@@ -7,6 +7,8 @@ import { FrontComponent } from './front.component';
 import { ClaimModule } from './claim/claim.module';
 import {UsersService} from '../services/managers/users.service';
 import {BrowserModule} from '@angular/platform-browser';
+import { ForumTopicsComponent } from './forum/forum-topics/forum-topics.component';
+import { SingleTopicComponent } from './forum/single-topic/single-topic.component';
 
 
 @NgModule({
@@ -15,7 +17,7 @@ import {BrowserModule} from '@angular/platform-browser';
     FrontRouting,
     ClaimModule,
   ],
-  declarations: [ FrontComponent, HomeComponent ],
+  declarations: [ FrontComponent, HomeComponent, ForumTopicsComponent, SingleTopicComponent ],
   providers:[
     UsersService,
   ]

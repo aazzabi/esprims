@@ -11,40 +11,37 @@ import {StorageService} from '../services/security/storage.service';
 })
 export class FrontComponent  {
   title = 'argon-dashboard-angular';
-  bool = false;
-  logged: User;
+  
+  logged;
 
-  constructor(private UserService: UsersService, private router: Router) {
+  constructor( private router: Router) {
+    console.log("front")
+    console.log(localStorage.getItem("id"))
+    this.showDropdown()
   }
 
-  userLogged = StorageService.get('currentUser');
+  
 
   logout() {
     this.router.navigate(['/login']);
-    StorageService.clear('currentUser');
+          localStorage["name"] = null
+          localStorage["avatar"] = null
+          localStorage["role"] = null
+          localStorage["token"] = null
+    this.logged=false
   }
 
   showDropdown() {
-    if (this.bool === false) {
-      this.bool = true;
-      console.log(this.bool);
-    } else {
-      this.bool = false;
+    if (localStorage['token']!= null)
+    {
+      this.logged= true 
     }
+    else this.logged=false ; 
   }
 
   OnInit() {
-    this.UserService.GetLoggedUser(StorageService.get('currentUser').userId)
-      .subscribe(
-        response => {
-          console.log(response);
-          // tslint:disable-next-line:no-unused-expression
-          this.logged = response;
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    this.showDropdown()
+  
 
   }
 }

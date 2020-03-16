@@ -30,9 +30,14 @@
     "jquery": "^3.4.1",
     "ngx-clipboard": "11.1.9",
     "ngx-toastr": "9.1.2",
+    "node-sass": "^4.13.1",
     "nouislider": "13.1.1",
     "rxjs": "6.4.0",
-    "zone.js": "0.8.29"
+    "zone.js": "0.8.29",
+    "firebase": "^7.5.0",
+    "@angular/fire": "^5.2.3",
+    "angular2-multiselect-dropdown": "^4.6.3",
+    "ng2-search-filter": "^0.5.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.13.1",

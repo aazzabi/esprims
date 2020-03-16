@@ -2,6 +2,8 @@ import {HomeComponent} from './home/home.component';
 import {FrontComponent} from './front.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { ForumTopicsComponent } from './forum/forum-topics/forum-topics.component';
+import { SingleTopicComponent } from './forum/single-topic/single-topic.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,8 @@ const routes: Routes = [
       {path: 'claim', loadChildren: './claim/claim.module#ClaimModule'}
     ]
   },
+  { path: 'topics', component: ForumTopicsComponent},
+  { path: 'singletopic/:num_topic', component: SingleTopicComponent},
 ];
 
 @NgModule({
