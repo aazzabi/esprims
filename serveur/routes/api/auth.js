@@ -73,7 +73,9 @@ router.post(
             const payload = {
                 user: {
                     id: user.id,
-                    name: user.name
+                    name: user.name,
+                    role: user.role,
+                    avatar: user.avatar,
                 }
             }; //l'emport
             jwt.sign(
@@ -85,7 +87,7 @@ router.post(
                 (err, token) => {
                     if (err) throw err;
                     res.json({
-                        token, user
+                        token,
                     });
                 }
             );

@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-import {User} from '../models/User';
-import {UsersService} from '../services/managers/users.service';
 import {Router} from '@angular/router';
+import {UserServices} from '../services/UserServices';
 import {StorageService} from '../services/security/storage.service';
 
 @Component({
@@ -9,39 +8,35 @@ import {StorageService} from '../services/security/storage.service';
   templateUrl: './front.component.html',
   styleUrls: ['./front.component.scss']
 })
-export class FrontComponent  {
+export class FrontComponent {
   title = 'argon-dashboard-angular';
-  
-  logged;
+  bool;
 
-  constructor( private router: Router) {
-    console.log("front")
-    console.log(localStorage.getItem("id"))
-    this.showDropdown()
+  logged;
+  private userLogged: any;
+
+  constructor(private router: Router, private userService: UserServices) {
+    this.userLogged = StorageService.get('currentUser');
+    console.log(this.userService.decodeToken());
+    this.showDropdown();
   }
 
-  
 
   logout() {
     this.router.navigate(['/login']);
-          localStorage["name"] = null
-          localStorage["avatar"] = null
-          localStorage["role"] = null
-          localStorage["token"] = null
-    this.logged=false
+    StorageService.clear('currentUser');
   }
 
   showDropdown() {
-    if (localStorage['token']!= null)
-    {
-      this.logged= true 
+    if (this.bool === false) {
+      this.bool = true;
+    } else {
+      this.bool = false;
     }
-    else this.logged=false ; 
   }
 
-  OnInit() {
-    this.showDropdown()
-  
 
+  OnInit() {
+    this.showDropdown();
   }
 }

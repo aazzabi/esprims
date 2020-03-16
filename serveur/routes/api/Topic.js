@@ -3,6 +3,26 @@ const router = express.Router();
 const Topic = require("../../models/Topic");
 const Comment = require("../../models/Comment");
 
+router.post('/', (req, res, next) => {
+    Topic.find({})
+        .then((data) => {
+            res.status(202).json(data);
+        })
+        .catch(error => {
+            res.status(500).send(error);
+        });
+});
+router.get("/:id", async (req, res) => {
+    Topic.find({"_id": req.params.id})
+        .then((data) => {
+            res.set('Content-Type', 'text/html');
+            res.status(202).send(data);
+        })
+        .catch(error => {
+            res.set('Content-Type', 'text/html');
+            res.status(500).send(error);
+        });
+});
 router.post("/add", async (req, res) => {
     Topic.create({
         title: req.body.title,

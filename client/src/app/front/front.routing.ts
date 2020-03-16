@@ -5,6 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { ForumTopicsComponent } from './forum/forum-topics/forum-topics.component';
 import { SingleTopicComponent } from './forum/single-topic/single-topic.component';
 import {GetTopicResolvers} from '../services/resolvers/get.topic.resolvers';
+import {GetCommentsResolvers} from '../services/resolvers/get.comments.resolver';
 
 const routes: Routes = [
   {
@@ -13,11 +14,11 @@ const routes: Routes = [
     children: [
       {path: '', component: HomeComponent},
       {path: '', loadChildren: '../layouts/auth-layout/auth-layout.module#AuthLayoutModule'},
-      {path: 'claim', loadChildren: './claim/claim.module#ClaimModule'}
+      {path: 'claim', loadChildren: './claim/claim.module#ClaimModule'},
+      { path: 'topics', component: ForumTopicsComponent },
+      { path: 'topics/:id', component: SingleTopicComponent, resolve: { topicSelected: GetTopicResolvers, comments: GetCommentsResolvers }},
     ]
   },
-  { path: 'topics', component: ForumTopicsComponent },
-  { path: 'singletopic/:num_topic', component: SingleTopicComponent, resolve: { topicSelected: GetTopicResolvers }},
 ];
 
 @NgModule({

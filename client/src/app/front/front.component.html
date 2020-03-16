@@ -1,19 +1,24 @@
 <head>
-  <link href="../../assets/front/css/jquery.simpleLens.css" rel="stylesheet" />
-  <link href="../../assets/front/css/jquery-ui.min.css" rel="stylesheet" />
+  <link href="../../assets/front/css/jquery.simpleLens.css" rel="stylesheet"/>
+  <link href="../../assets/front/css/jquery-ui.min.css" rel="stylesheet"/>
   <link
     href="../../assets/front/css/pe-icon-7-stroke.min.css"
     rel="stylesheet"
   />
-  <link href="../../assets/front/css/animate.css" rel="stylesheet" />
-  <link href="../../assets/front/css/argon.css" rel="stylesheet" />
-  <link href="../../assets/front/css/bootstrapfront.min.css" rel="stylesheet" />
-  <link href="../../assets/front/css/meanmenu.min.css" rel="stylesheet" />
-  <link href="../../assets/front/css/owl.carousel.css" rel="stylesheet" />
-  <link href="../../assets/front/css/responsive.css" rel="stylesheet" />
-  <link href="../../assets/front/css/nivo-slider.css" rel="stylesheet" />
-  <link href="../../assets/front/css/style.css" rel="stylesheet" />
-  <link href="../../assets/front/css/font-awesome.min.css" rel="stylesheet" />
+  <style>
+    .sousItem {
+      color: black !important;
+    }
+  </style>
+  <link href="../../assets/front/css/animate.css" rel="stylesheet"/>
+  <link href="../../assets/front/css/argon.css" rel="stylesheet"/>
+  <link href="../../assets/front/css/bootstrapfront.min.css" rel="stylesheet"/>
+  <link href="../../assets/front/css/meanmenu.min.css" rel="stylesheet"/>
+  <link href="../../assets/front/css/owl.carousel.css" rel="stylesheet"/>
+  <link href="../../assets/front/css/responsive.css" rel="stylesheet"/>
+  <link href="../../assets/front/css/nivo-slider.css" rel="stylesheet"/>
+  <link href="../../assets/front/css/style.css" rel="stylesheet"/>
+  <link href="../../assets/front/css/font-awesome.min.css" rel="stylesheet"/>
   <link
     href="../../assets/front/css/bootstrap/bootstrap.min.css"
     rel="stylesheet"
@@ -60,79 +65,80 @@
   </style>
 </head>
 <body>
-  <nav
-    class="navbar navbar-expand-lg navbar-dark bg-default"
-    style="height: 130px; margin-bottom: 0px !important; background-color: $dark-color !important;"
-  >
-    <div class="container">
-      <a class="navbar-brand" href="#"
-        ><img
-          src="../../assets/nidhal/assets/img/core-img/logo.png"
-          style="margin-top: -50px; width:130px; height:130px"
-      /></a>
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-default"
+  style="height: 130px; margin-bottom: 0px !important; background-color: $dark-color !important;"
+>
+  <div class="container">
+    <a class="navbar-brand" href="#"
+    ><img
+      src="../../assets/nidhal/assets/img/core-img/logo.png"
+      style="margin-top: -50px; width:130px; height:130px"
+    /></a>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbar-default"
-        aria-controls="navbar-default"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar-default">
-        <div class="navbar-collapse-header">
-          <div class="row">
-            <div class="col-6 collapse-brand">
-              <a href="index.html">
-                <img src="../../../assets/front/img/brand/lacasa.png" />
-              </a>
-            </div>
-            <div class="col-6 collapse-close">
-              <button
-                type="button"
-                class="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#navbar-default"
-                aria-controls="navbar-default"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span></span>
-                <span></span>
-              </button>
-            </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-default"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-default">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a href="index.html">
+              <img src="../../../assets/front/img/brand/lacasa.png"/>
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button
+              type="button"
+              class="navbar-toggler"
+              data-toggle="collapse"
+              data-target="#navbar-default"
+              aria-controls="navbar-default"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
-
-        <ul class="navbar-nav ml-lg-auto">
-          <li class="nav-item">
-            <a class="nav-link nav-link-icon" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-icon" href="#">Events </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-icon"  routerLink="/topics">Forum </a>
-          </li>
-          <ng-container *ngIf="!logged">
-            <li>
-              <a class="nav-link nav-link-icon" href="#">Login </a>
-            </li>
-          </ng-container>
-
-          <ng-container *ngIf="logged">
-            <li>
-              <a class="nav-link nav-link-icon" (click)="logout()">Logout </a>
-            </li>
-          </ng-container>
-        </ul>
       </div>
+
+      <ul class="navbar-nav ml-lg-auto">
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="#">Events </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" routerLink="/topics">Forum </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-icon dropdown" id="navbar-default_dropdown_1" (click)="showDropdown()"
+             role="button"
+             data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">Settings</a>
+          <div class="dropdown-menu dropdown-menu-right {{bool}}" [ngClass]="(bool==true)? 'show': ''"
+               aria-labelledby="navbar-default_dropdown_1">
+            <a class="nav-link nav-link-icon sousItem" *ngIf="userLogged != null" routerLink="/dash">Dashboard </a>
+            <a class="nav-link nav-link-icon sousItem" *ngIf="userLogged != null" (click)="logout()">Se déconnecter </a>
+            <a class="nav-link nav-link-icon sousItem" *ngIf="userLogged == null" routerLink="/login">Se connecter </a>
+          </div>
+        </li>
+      </ul>
     </div>
-  </nav>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+  </div>
+</nav>
+<main>
+  <router-outlet></router-outlet>
+</main>
 </body>
