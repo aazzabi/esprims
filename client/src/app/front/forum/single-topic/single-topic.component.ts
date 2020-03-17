@@ -42,6 +42,7 @@ export class SingleTopicComponent implements OnInit {
   ngOnInit() {
     this.userLogged = this.userService.getIdUserByToken();
     this.topic = this.route.snapshot.data['topicSelected'][0];
+    console.log(this.topic);
     this.comments = this.route.snapshot.data['comments'];
   }
 
@@ -49,13 +50,13 @@ export class SingleTopicComponent implements OnInit {
   addComment() {
     if (LoginService.isLogged()) {
       const currentUser = StorageService.get('currentUser');
-      console.log( this.addCommentFrom.value.text);
       const com = new Comment(this.addCommentFrom.value.text);
-      this.topicService.addCommentToTopic(this.topic[0]['_id'], this.userService.getIdUserByToken(), com)
+      this.topicService.addCommentToTopic(this.topic['_id'], this.userService.getIdUserByToken(), com)
         .subscribe(
           response => {
             this.getAllComments();
-            this.router.navigate(['/topics/', this.topic[0]['_id']]);
+            this.addCommentFrom.value.text.val('');
+            this.router.navigate(['/topics/', this.topic['_id']]);
           },
           error => {
             console.log(error);
@@ -71,12 +72,13 @@ export class SingleTopicComponent implements OnInit {
     this.topicService.deleteComment(id).subscribe(data => {
       console.log(data);
     });
+    this.comments.splice(id,1);
     this.getAllComments();
 
   }
 
   getAllComments() {
-    this.topicService.getAllCommentsByTopic(this.topic[0]['_id']).subscribe(
+    this.topicService.getAllCommentsByTopic(this.topic['_id']).subscribe(
       data => {
         this.comments = data;
     });

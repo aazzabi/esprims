@@ -16,7 +16,7 @@ import {StorageServiceModule} from 'angular-webstorage-service';
 import {FrontModule} from './front/front.module';
 import {BackModule} from './back/back.module';
 import {AuthIntercepter} from './services/security/auth.intercepter';
-import {RoleGuard} from './services/security/role.guard';
+import {RoleAdminGuard} from './services/security/role.guard';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {EventServices} from './services/EventServices';
@@ -53,7 +53,7 @@ import {StorageService} from './services/security/storage.service';
   providers: [
     LoginService,
     EventServices,
-    RoleGuard,
+    RoleAdminGuard,
     TopicService,
     AlertService,
     StorageService,

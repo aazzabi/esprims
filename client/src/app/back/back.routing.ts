@@ -6,14 +6,13 @@ import {AddEventComponent} from './dashboard/Events/add-event/add-event.componen
 import {AllEventsComponent} from './dashboard/Events/all-events/all-events.component';
 import {UpdateEventComponent} from './dashboard/Events/update-event/update-event.component';
 import {AllTopicsComponent} from './dashboard/Topics/all.topics.component';
-import {RoleGuard} from '../services/security/role.guard';
+import {RoleAdminGuard} from '../services/security/role.guard';
 
 const routes: Routes = [
   {
     path: 'dash',
     component: BackComponent,
-    canActivateChild: [RoleGuard],
-    data: {roles: ['ADMIN']},
+    canActivateChild: [RoleAdminGuard],
     children: [
       {path: '', component: DashboardComponent},
       {path: 'addevent', component: AddEventComponent},

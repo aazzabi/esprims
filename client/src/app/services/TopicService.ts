@@ -28,7 +28,7 @@ export class TopicService {
   }
 
   public addTopic(topic): Observable<Topic> {
-    return this.http.post<Topic>('http://127.0.0.1:5000/api/topic/addCommentToTopic/', topic);
+    return this.http.post<Topic>('http://127.0.0.1:5000/api/topic/add', topic);
   }
 
   public addCommentToTopic(idTopic, idUser, comment): Observable<Topic> {

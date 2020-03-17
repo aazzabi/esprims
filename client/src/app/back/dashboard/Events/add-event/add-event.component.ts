@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { ImageUploadComponent } from "src/app/SharedComponent/image-upload/image-upload.component";
-import { Event } from "src/app/models/Event";
-import { AngularFireStorage } from "@angular/fire/storage";
-import { ImageUploadServicService } from "src/app/SharedComponent/image-upload/image-upload-servic.service";
-import { Router } from "@angular/router";
-import { finalize } from "rxjs/operators";
-import { EventServices } from "src/app/services/EventServices";
+import {Component, OnInit, ViewChild} from "@angular/core";
+import {ImageUploadComponent} from "src/app/SharedComponent/image-upload/image-upload.component";
+import {Event} from "src/app/models/Event";
+import {AngularFireStorage} from "@angular/fire/storage";
+import {ImageUploadServicService} from "src/app/SharedComponent/image-upload/image-upload-servic.service";
+import {Router} from "@angular/router";
+import {finalize} from "rxjs/operators";
+import {EventServices} from "src/app/services/EventServices";
 
 @Component({
   selector: "app-add-event",
@@ -26,14 +26,17 @@ export class AddEventComponent implements OnInit {
     picture: ""
   };
   id;
+
   constructor(
     private eventService: EventServices,
     private storage: AngularFireStorage,
     public serviceimage: ImageUploadServicService,
     private router: Router
-  ) {}
+  ) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   onclickenvoyer(e) {
     var pictureinfo: any[] = this.testComponent.handleSubmit(e);
@@ -49,21 +52,15 @@ export class AddEventComponent implements OnInit {
       .pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe(url => {
-            console.log(url);
             this.picturemap = url;
-            console.log(this.picturemap);
             this.event.picture = this.picturemap;
-            console.log("event to add ", this.event)
-            this.eventService.addEvent(this.event).subscribe(response=> 
-              console.log(response))
+            this.eventService.addEvent(this.event).subscribe(response => console.log(response));
 
 
-
-         
           });
         })
       )
       .subscribe();
-
+    this.router.navigate(['/dash/allevents']);
   }
 }

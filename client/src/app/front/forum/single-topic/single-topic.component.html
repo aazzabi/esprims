@@ -13,31 +13,31 @@
     <div class="row row-grid align-items-center">
       <div class="col-md-6">
         <div class="card bg-default shadow border-0">
-          <ng-container *ngIf="topic[0].categorie == 'Gameplay'">
+          <ng-container *ngIf="topic.categorie == 'Gameplay'">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRJmII-B2KnU2OhBLEeIHBB8qEhJuZ9ucVjaxIqNKXwAEGG9Xan"
               class="card-img-top"
             />
           </ng-container>
-          <ng-container *ngIf="topic[0].categorie == 'Bugs'">
+          <ng-container *ngIf="topic.categorie == 'Bugs'">
             <img
               src="https://i.ytimg.com/vi/xyAv5QXfBSE/maxresdefault.jpg"
               class="card-img-top"
             />
           </ng-container>
-          <ng-container *ngIf="topic[0].categorie == 'Comptetions'">
+          <ng-container *ngIf="topic.categorie == 'Comptetions'">
             <img
               src="https://www.insidescandinavianbusiness.com/img/big/E-gamer.jpg"
               class="card-img-top"
             />
           </ng-container>
-          <ng-container *ngIf="topic[0].categorie == 'Claims'">
+          <ng-container *ngIf="topic.categorie == 'Claims'">
             <img
               src="https://c4.wallpaperflare.com/wallpaper/284/1010/379/quote-minimalism-gas-masks-typography-wallpaper-preview.jpg"
               class="card-img-top"
             />
           </ng-container>
-          <ng-container *ngIf="topic[0].categorie == 'Others'">
+          <ng-container *ngIf="topic.categorie == 'Others'">
             <img
               src="https://img.chefdentreprise.com/Images/Breves/breve50234-0.JPG"
               class="card-img-top"
@@ -48,15 +48,15 @@
       <div class="col-md-6">
         <div class="pl-md-5">
           <h3 class="h4 text-default font-weight-bold mb-4">
-            <h2 class="d-block"> {{topic[0].title}} </h2>
+            <h2 class="d-block"> {{topic.title}} </h2>
           </h3>
-          <small class="d-block mb-2"> {{ topic[0].categorie }} </small>
+          <small class="d-block mb-2"> {{ topic.categorie }} </small>
 
           <small class="d-block">
-            <i class="fa fa-user"></i> {{ topic[0].createdBy }}
+            <i class="fa fa-user"></i> {{ topic.createdBy }}
           </small>
 
-          <p class="lead">{{ topic[0].description }}</p>
+          <p class="lead">{{ topic.description }}</p>
         </div>
       </div>
     </div>

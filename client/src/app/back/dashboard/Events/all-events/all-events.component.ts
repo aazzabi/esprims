@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { EventServices } from "src/app/services/EventServices";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EventServices } from 'src/app/services/EventServices';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-all-events",
-  templateUrl: "./all-events.component.html",
-  styleUrls: ["./all-events.component.scss"]
+  selector: 'app-all-events',
+  templateUrl: './all-events.component.html',
+  styleUrls: ['./all-events.component.scss']
 })
 export class AllEventsComponent implements OnInit {
   searchText;

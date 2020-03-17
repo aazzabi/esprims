@@ -1,9 +1,9 @@
 <style>
-  .blockquote h6 {
+  .titeText {
     font-size: 20px !important;
   }
-  .blockquote p {
-    font-size: 20px;
+  .dateText {
+    font-size: 20px ;
   }
 </style>
 
@@ -59,201 +59,66 @@
 </section>
 <section class="section section-lg">
   <div class="container">
-    <br />
-    <br />
-    <br />
+    <br/>
+    <br/>
+    <br/>
     <div class="row row-grid align-items-center">
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="row row-grid">
             <!-- Forum Top 1 -->
-            <ng-container *ngFor="let t of topics">
-              <ng-container *ngIf="t.categorie == 'Gameplay'">
-                <div class="col-lg-3">
-                  <div class="card card-lift--hover shadow border-0">
-                    <div class="card bg-default shadow border-0">
-                      <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRJmII-B2KnU2OhBLEeIHBB8qEhJuZ9ucVjaxIqNKXwAEGG9Xan"
-                        class="card-img-top"
-                        routerLink="/topics/{{ t._id }}"
-                      />
-                      <blockquote class="card-blockquote">
-                        <svg
-                          preserveAspectRatio="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 583 95"
-                          class="svg-bg"
-                        >
-                          <polygon
-                            points="0,52 583,95 0,95"
-                            class="fill-default"
-                          />
-                          <polygon
-                            points="0,42 583,95 683,0 0,95"
-                            opacity=".2"
-                            class="fill-default"
-                          />
-                        </svg>
-                        <h6 class="display-3 font-weight-bold text-white">
-                          {{ t.title }}
-                        </h6>
-                        <p class="lead text-italic text-white">
-                          {{ t.createdAt }} - {{ t.createdBy }}
-                        </p>
-                      </blockquote>
-                    </div>
+            <div class="col-md-3" *ngFor="let t of topics">
+              <a routerLink="/topics/{{ t._id }}">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card bg-default shadow border-0">
+                    <img *ngIf="t.categorie == 'Gameplay'"
+                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRJmII-B2KnU2OhBLEeIHBB8qEhJuZ9ucVjaxIqNKXwAEGG9Xan"
+                         class="card-img-top"
+                    />
+                    <img *ngIf="t.categorie == 'Bugs'"
+                         src="https://i.ytimg.com/vi/xyAv5QXfBSE/maxresdefault.jpg"
+                         class="card-img-top"
+                    />
+                    <img *ngIf="t.categorie == 'Comptetions'"
+                         src="https://www.insidescandinavianbusiness.com/img/big/E-gamer.jpg"
+                         class="card-img-top"
+                    />
+                    <img *ngIf="t.categorie == 'Claims'"
+                         src="https://c4.wallpaperflare.com/wallpaper/284/1010/379/quote-minimalism-gas-masks-typography-wallpaper-preview.jpg"
+                         class="card-img-top"
+                    />
+                    <img *ngIf="t.categorie == 'Others'"
+                         src="https://img.chefdentreprise.com/Images/Breves/breve50234-0.JPG"
+                         class="card-img-top"
+                    />
+                    <blockquote class="card-blockquote">
+                      <svg
+                        preserveAspectRatio="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 583 95"
+                        class="svg-bg"
+                      >
+                        <polygon
+                          points="0,52 583,95 0,95"
+                          class="fill-default"
+                        />
+                        <polygon
+                          points="0,42 583,95 683,0 0,95"
+                          opacity=".2"
+                          class="fill-default"
+                        />
+                      </svg>
+                      <h6 class="display-3 font-weight-bold text-white titeText">
+                        {{ t.title }}
+                      </h6>
+                      <p class="lead text-italic text-white dateText">
+                        {{ t.createdAt | date: 'fullDate' }} - {{ t.createdBy }}
+                      </p>
+                    </blockquote>
                   </div>
                 </div>
-              </ng-container>
-              <ng-container *ngIf="t.categorie == 'Bugs'">
-                <div class="col-lg-3">
-                  <div class="card card-lift--hover shadow border-0">
-                    <div class="card bg-default shadow border-0">
-                      <img
-                        src="https://i.ytimg.com/vi/xyAv5QXfBSE/maxresdefault.jpg"
-                        class="card-img-top"
-                        routerLink="/topics/{{ t._id }}"
-                      />
-                      <blockquote class="card-blockquote">
-                        <svg
-                          preserveAspectRatio="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 583 95"
-                          class="svg-bg"
-                        >
-                          <polygon
-                            points="0,52 583,95 0,95"
-                            class="fill-default"
-                          />
-                          <polygon
-                            points="0,42 583,95 683,0 0,95"
-                            opacity=".2"
-                            class="fill-default"
-                          />
-                        </svg>
-                        <h6 class="display-3 font-weight-bold text-white">
-                          {{ t.title }}
-                        </h6>
-                        <p class="lead text-italic text-white">
-                          {{ t.createdAt }} - {{ t.createdBy }}
-                        </p>
-                      </blockquote>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-              <ng-container *ngIf="t.categorie == 'Comptetions'">
-                <div class="col-lg-3">
-                  <div class="card card-lift--hover shadow border-0">
-                    <div class="card bg-default shadow border-0">
-                      <img
-                        src="https://www.insidescandinavianbusiness.com/img/big/E-gamer.jpg"
-                        class="card-img-top"
-                        routerLink="/topics/{{ t._id }}"
-                      />
-                      <blockquote class="card-blockquote">
-                        <svg
-                          preserveAspectRatio="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 583 95"
-                          class="svg-bg"
-                        >
-                          <polygon
-                            points="0,52 583,95 0,95"
-                            class="fill-default"
-                          />
-                          <polygon
-                            points="0,42 583,95 683,0 0,95"
-                            opacity=".2"
-                            class="fill-default"
-                          />
-                        </svg>
-                        <h6 class="display-3 font-weight-bold text-white">
-                          {{ t.title }}
-                        </h6>
-                        <p class="lead text-italic text-white">
-                          {{ t.createdAt }} - {{ t.createdBy }}
-                        </p>
-                      </blockquote>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-              <ng-container *ngIf="t.categorie == 'Claims'">
-                <div class="col-lg-3">
-                  <div class="card card-lift--hover shadow border-0">
-                    <div class="card bg-default shadow border-0">
-                      <img
-                        src="https://c4.wallpaperflare.com/wallpaper/284/1010/379/quote-minimalism-gas-masks-typography-wallpaper-preview.jpg"
-                        class="card-img-top"
-                        routerLink="/topics/{{ t._id }}"
-                      />
-                      <blockquote class="card-blockquote">
-                        <svg
-                          preserveAspectRatio="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 583 95"
-                          class="svg-bg"
-                        >
-                          <polygon
-                            points="0,52 583,95 0,95"
-                            class="fill-default"
-                          />
-                          <polygon
-                            points="0,42 583,95 683,0 0,95"
-                            opacity=".2"
-                            class="fill-default"
-                          />
-                        </svg>
-                        <h6 class="display-3 font-weight-bold text-white">
-                          {{ t.title }}
-                        </h6>
-                        <p class="lead text-italic text-white">
-                          {{ t.createdAt }} - {{ t.createdBy }}
-                        </p>
-                      </blockquote>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-              <ng-container *ngIf="t.categorie == 'Others'">
-                <div class="col-lg-3">
-                  <div class="card card-lift--hover shadow border-0">
-                    <div class="card bg-default shadow border-0">
-                      <img
-                        src="https://img.chefdentreprise.com/Images/Breves/breve50234-0.JPG"
-                        class="card-img-top"
-                        routerLink="/topic/{{ t._id }}"
-                      />
-                      <blockquote class="card-blockquote">
-                        <svg
-                          preserveAspectRatio="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 583 95"
-                          class="svg-bg"
-                        >
-                          <polygon
-                            points="0,52 583,95 0,95"
-                            class="fill-default"
-                          />
-                          <polygon
-                            points="0,42 583,95 683,0 0,95"
-                            opacity=".2"
-                            class="fill-default"
-                          />
-                        </svg>
-                        <h6 class="display-3 font-weight-bold text-white">
-                          {{ t.title }}
-                        </h6>
-                        <p class="lead text-italic text-white">
-                          {{ t.createdAt }} - {{ t.createdBy }}
-                        </p>
-                      </blockquote>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-            </ng-container>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -266,7 +131,7 @@
 
 <footer class="footer has-cards">
   <div class="container">
-    <hr />
+    <hr/>
     <div class="row align-items-center justify-content-md-between">
       <div class="col-md-6">
         <div class="copyright">
@@ -282,7 +147,7 @@
               href="https://www.creative-tim.com"
               class="nav-link"
               target="_blank"
-              >Creative Tim</a
+            >Creative Tim</a
             >
           </li>
           <li class="nav-item">
@@ -290,7 +155,7 @@
               href="https://www.creative-tim.com/presentation"
               class="nav-link"
               target="_blank"
-              >About Us</a
+            >About Us</a
             >
           </li>
           <li class="nav-item">
@@ -298,7 +163,7 @@
               href="http://blog.creative-tim.com"
               class="nav-link"
               target="_blank"
-              >Blog</a
+            >Blog</a
             >
           </li>
           <li class="nav-item">
@@ -306,7 +171,7 @@
               href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md"
               class="nav-link"
               target="_blank"
-              >MIT License</a
+            >MIT License</a
             >
           </li>
         </ul>

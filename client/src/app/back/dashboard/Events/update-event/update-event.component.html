@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-white">Ok, Got it</button>
+          <button type="button" class="btn btn-white" (click)="modal1.dismiss('Cross click')">Ok, Got it</button>
         </div>
       </div>
     </div>
@@ -56,15 +56,15 @@
           <form #userForm="ngForm">
             <div class="row">
               <div class="col-md-5 col-sm-5">
-                <br />
+                <br/>
                 <h6>Picture</h6>
                 <app-image-upload
                   [imgpacktoupdateinput]="img"
-                ></app-image-upload>  
+                ></app-image-upload>
               </div>
 
               <div class="col-md-7 col-sm-7">
-               
+
                 <div class="form-group">
                   <h6>
                     Title<span class="icon-danger text-orange">&nbsp; *</span>
@@ -79,12 +79,12 @@
                     required
                   />
                 </div>
-               
+
                 <div class="form-group">
                   <h6>
                     Description<span class="icon-danger text-orange"
-                      >&nbsp; *</span
-                    >
+                  >&nbsp; *</span
+                  >
                   </h6>
                   <input
                     type="text"
@@ -99,8 +99,8 @@
                 <div class="form-group">
                   <h6>
                     Date <span class="icon-danger text-orange"
-                      >&nbsp; *</span
-                    >
+                  >&nbsp; *</span
+                  >
                   </h6>
                   <input
                     type="date"
@@ -112,7 +112,7 @@
                     required
                   />
                 </div>
-            
+
                 <div class="row buttons-row">
                   <div class="col-md-4 col-sm-4">
                     <button
@@ -128,7 +128,7 @@
           </form>
         </div>
 
-        <br /><br />
+        <br/><br/>
       </div>
     </div>
   </div>

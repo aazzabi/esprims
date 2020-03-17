@@ -38,6 +38,7 @@ export  class  AddTopicComponent {
       this.topicService.addTopic(this.topic)
         .subscribe(
           response => {
+            console.log('hhhh');
             this.router.navigate(['/topics']);
           },
           error => {console.log(error); }

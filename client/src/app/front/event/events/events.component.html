@@ -43,11 +43,11 @@
 </section>
 <section class="section section-lg">
   <div class="container">
-    <br />
-    <br />
-   
-      <div class="row">
-        <ng-container *ngFor="let e of events">
+    <br/>
+    <br/>
+
+    <div class="row">
+      <ng-container *ngFor="let e of events">
         <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
           <div class="px-4">
             <img
@@ -58,10 +58,10 @@
             <div class="pt-4 text-center">
               <h5 class="title">
                 <span class="d-block mb-1">{{e.title}}</span>
-                <small class="h6 text-muted">{{e.date_event}}</small>
+                <small class="h6 text-muted">{{e.date_event | date:'fullDate'}}</small>
                 <div class="card-profile-actions py-2 mt-lg-0">
                   <a routerLink="/events/{{e._id}}" class="btn btn-sm btn-info "
-                    >Details</a
+                  >Details</a
                   >
                 </div>
               </h5>
@@ -70,8 +70,7 @@
         </div>
       </ng-container>
 
-      </div>
-   
+    </div>
 
 
   </div>
@@ -82,7 +81,7 @@
 
 <footer class="footer has-cards">
   <div class="container">
-    <hr />
+    <hr/>
     <div class="row align-items-center justify-content-md-between">
       <div class="col-md-6">
         <div class="copyright">
@@ -98,7 +97,7 @@
               href="https://www.creative-tim.com"
               class="nav-link"
               target="_blank"
-              >Creative Tim</a
+            >Creative Tim</a
             >
           </li>
           <li class="nav-item">
@@ -106,7 +105,7 @@
               href="https://www.creative-tim.com/presentation"
               class="nav-link"
               target="_blank"
-              >About Us</a
+            >About Us</a
             >
           </li>
           <li class="nav-item">
@@ -114,7 +113,7 @@
               href="http://blog.creative-tim.com"
               class="nav-link"
               target="_blank"
-              >Blog</a
+            >Blog</a
             >
           </li>
           <li class="nav-item">
@@ -122,7 +121,7 @@
               href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md"
               class="nav-link"
               target="_blank"
-              >MIT License</a
+            >MIT License</a
             >
           </li>
         </ul>
