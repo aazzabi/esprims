@@ -4,11 +4,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserServices} from 'src/app/services/UserServices';
 import {Topic} from '../../../models/Topic';
 import {Comment} from '../../../models/Comment';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {LoginService} from "../../../services/security/login.service";
-import {StorageService} from "../../../services/security/storage.service";
-import {TopicService} from "../../../services/TopicService";
-import {AlertService} from "../../../services/managers/AlerteService";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {LoginService} from '../../../services/security/login.service';
+import {StorageService} from '../../../services/security/storage.service';
+import {AlertService} from '../../../services/managers/AlerteService';
+import {TopicService} from '../../../services/TopicService';
 
 @Component({
   selector: 'app-single-topic',
@@ -17,15 +17,15 @@ import {AlertService} from "../../../services/managers/AlerteService";
 })
 export class SingleTopicComponent implements OnInit {
   topic: Topic;
-  comments: Comment[];
   model: any = {};
+  comments: any = [];
   public data: any = [];
   num_topic;
   comment;
-  user_connected_id = localStorage.getItem('id');
 
+  userLogged;
   addCommentFrom = new FormGroup({
-    post: new FormControl('', [Validators.required]),
+    text: new FormControl('', [Validators.required]),
   });
 
 
@@ -39,60 +39,52 @@ export class SingleTopicComponent implements OnInit {
   ) {
     this.topic = this.route.snapshot.data['topicSelected'];
     this.comments = this.route.snapshot.data['comments'];
-    console.log(this.topic);
+    console.log(this.topic[0]['comments']);
+    console.log(this.comments.length);
   }
 
   ngOnInit() {
+    this.userLogged = this.userService.getIdUserByToken();
     this.topic = this.route.snapshot.data['topicSelected'];
     this.comments = this.route.snapshot.data['comments'];
-    // this.route.paramMap.subscribe((params: ParamMap) => {
-    //   // tslint:disable-next-line:radix
-    //   const num = parseInt(params.get('num_topic'));
-    //   this.num_topic = num;
-    // });
-    // this.user_connected_id = localStorage['id'];
   }
 
-  // getComments() {
-  //   this.commentService.getCommentsPerTopic().subscribe(
-  //     (response: any) => {
-  //       this.data = response;
-  //     },
-  //     response => console.log(response.statusText)
-  //   );
-  // }
 
   addComment() {
     if (LoginService.isLogged()) {
       const currentUser = StorageService.get('currentUser');
-      console.log(StorageService.get('currentUser'));
-      console.log(this.topic[0]['_id']);
-      console.log(this.userService.decodeToken().user.id);
-      // tslint:disable-next-line:max-line-length
-      this.topicService.addCommentToTopic(this.topic[0]['_id'], this.userService.getIdUserByToken(), this.addCommentFrom.value.post)
+      console.log( this.addCommentFrom.value.text);
+      const com = new Comment(this.addCommentFrom.value.text);
+      this.topicService.addCommentToTopic(this.topic[0]['_id'], this.userService.getIdUserByToken(), com)
         .subscribe(
           response => {
-            console.log('here 73');
-            this.router.navigate(['/topics/:id', this.topic[0]['_id']]);
+            this.getAllComments();
+            this.router.navigate(['/topics/', this.topic[0]['_id']]);
           },
           error => {
-            console.log('here 76');
             console.log(error);
           }
         );
     } else {
-      console.log('here 97777777777777');
-      // , content: [this.addCommentFrom.value.post]
       this.router.navigate(['/login'], {queryParams: {returnUrl: ['/topics/add']}});
       this.alertService.error('Vous devez se connecter d\'abord');
     }
   }
 
-
   deleteComment(id) {
-    this.commentService.deleteComment(id).subscribe(data => {
+    this.topicService.deleteComment(id).subscribe(data => {
       console.log(data);
-      // this.getComments();
     });
+    this.getAllComments();
+
   }
+
+  getAllComments() {
+    this.topicService.getAllCommentsByTopic(this.topic[0]['_id']).subscribe(
+      data => {
+        this.comments = data;
+      });
+  }
+
+
 }

@@ -28,7 +28,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from '../environments/environment';
 import {TopicService} from './services/TopicService';
 import {AlertService} from './services/managers/AlerteService';
-import {StorageService} from "./services/security/storage.service";
+import {StorageService} from './services/security/storage.service';
 
 @NgModule({
   imports: [

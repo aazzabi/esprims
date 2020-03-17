@@ -66,6 +66,7 @@ export class UserServices {
     const decoded = jwt_decode(token);
     return decoded;
   }
+
   getIdUserByToken() {
     const token = StorageService.get('currentUser');
     const decoded = jwt_decode(token);

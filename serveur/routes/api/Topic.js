@@ -14,7 +14,7 @@ router.post('/', (req, res, next) => {
         });
 });
 router.get("/:id", async (req, res) => {
-    Topic.find({"_id": req.params.id})
+    Topic.find({"_id": req.params.id}).populate('comments')
         .then((data) => {
             res.set('Content-Type', 'text/html');
             res.status(202).send(data);
@@ -43,7 +43,7 @@ router.post("/add", async (req, res) => {
         });
 });
 router.post("/addCommentToTopic/:idTopic/:idUser", async (req, res) => {
-    const topic = await Topic.findById(req.params.idTopic);
+    const topic = await Topic.findById(req.params.idTopic).populate('comments');
     const userConnected = await User.findById(req.params.idUser);
     Comment.create({
         text: req.body.text,
@@ -62,12 +62,13 @@ router.post("/addCommentToTopic/:idTopic/:idUser", async (req, res) => {
         });
 });
 router.get("/commentsByTopicId/:idTopic", async (req, res) => {
-    const topic = await Topic.findById(req.params.idTopic);
+    const topic = await Topic.findById(req.params.idTopic).populate('comments');
     console.log(topic);
     var tab = new Array();
     //var comments = await Comment.find({"_id": topic.comments._id}).exec();
     for (const c of topic.comments) {
-        const ca = await Comment.findById(c._id);
+        const ca = await Comment.findById(c._id).populate("commentedBy");
+        console.log(ca);
         tab.push(ca);
     }
 

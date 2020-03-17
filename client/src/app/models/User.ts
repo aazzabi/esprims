@@ -5,6 +5,7 @@ export class User {
   public password: string;
   public role: string;
   public email: string;
+  public avatar: string;
   public createdAt: Date;
   public lastAuthentificated: Date;
   public passwordLastChanged: Date;

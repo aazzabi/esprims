@@ -18,7 +18,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    CommonModule,
     FrontRouting,
     ClaimModule,
     ReactiveFormsModule,

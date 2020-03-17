@@ -1,11 +1,13 @@
-import {Topic} from "./Topic";
+import {Topic} from './Topic';
+import {User} from './User';
 
 export class Comment {
 
-    public id: number;
+    public _id: number;
     public topic: Topic;
     public topicId: number;
     public uid: number;
+    public commentedBy: User;
     public text: string;
 
   public constructor(text: string) {
