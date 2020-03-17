@@ -14,6 +14,11 @@ import {UserServices} from '../services/UserServices';
 import {AddTopicComponent} from './forum/addTopic/add-topic.component';
 import {AlertComponent} from './alerteJumbotron/alert.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { AllTopicsResolver } from '../services/resolvers/all.topics.resolver';
+import { EventsComponent } from './event/events/events.component';
+import { SingleEventComponent } from './event/single-event/single-event.component';
+import { GetEventResolver } from '../services/resolvers/get.event.resolver';
+import { AllEventsResolver } from '../services/resolvers/all.events.resolver';
 
 
 @NgModule({
@@ -29,11 +34,16 @@ import {ReactiveFormsModule} from '@angular/forms';
     HomeComponent,
     AddTopicComponent,
     ForumTopicsComponent,
-    SingleTopicComponent ],
+    SingleTopicComponent,
+    EventsComponent,
+    SingleEventComponent ],
   providers: [
     GetTopicResolvers,
     GetCommentsResolvers,
-    UserServices
+    UserServices, 
+    AllTopicsResolver, 
+    GetEventResolver, 
+    AllEventsResolver
   ]
 })
 export class FrontModule { }

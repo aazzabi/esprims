@@ -1,16 +1,17 @@
 import {Resolve, ActivatedRoute, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {EventService} from '../managers/event.service';
 import {Event} from '../../models/Event';
+import { EventServices } from '../EventServices';
 
 @Injectable()
-export class AllEventsResolver implements Resolve<Event[]> {
-  constructor(private eventService: EventService) {}
+export class AllEventsResolver implements Resolve<Event> {
+  constructor(private eventService: EventServices) {}
 
-  // @ts-ignore
-  resolve(route: ActivatedRoute, state: RouterStateSnapshot): Observable<Event[]> {
-    return this.eventService.getAllEvents();
+   // @ts-ignore
+   resolve( state: RouterStateSnapshot): Observable<Event> {
+    console.log("resolver")
+    return this.eventService.allEvents(); 
   }
 
 }
