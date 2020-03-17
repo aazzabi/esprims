@@ -27,6 +27,7 @@ export class EventServices {
     );
   }
   public getEvent(id): Observable<Event> {
-    return this.http.get<Event>("http://127.0.0.1:5000/api/event/byid/" + id);
+    console.log("getting the event " + id)
+    return this.http.get<Event>("http://127.0.0.1:5000/api/event/" + id);
   }
 }

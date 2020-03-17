@@ -11,7 +11,8 @@ export class TopicService {
   constructor(public http: HttpClient) {
   }
   public getAll(): Observable<Topic[]> {
-    return this.http.get<Topic[]>('http://127.0.0.1:5000/api/topic/topics');
+    console.log("service topic ")
+    return this.http.get<Topic[]>('http://127.0.0.1:5000/api/topic');
   }
   public getById(idTopic): Observable<Comment> {
     return this.http.get<Comment>('http://127.0.0.1:5000/api/topic/' + idTopic );

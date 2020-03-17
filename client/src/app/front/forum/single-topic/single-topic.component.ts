@@ -39,7 +39,7 @@ export class SingleTopicComponent implements OnInit {
   ) {
     this.topic = this.route.snapshot.data['topicSelected'];
     this.comments = this.route.snapshot.data['comments'];
-    console.log(this.topic);
+    console.log("single topic", this.topic);
   }
 
   ngOnInit() {

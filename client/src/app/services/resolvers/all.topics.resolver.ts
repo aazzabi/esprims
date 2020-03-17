@@ -1,16 +1,17 @@
 import {Resolve, ActivatedRoute, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {EventService} from '../managers/event.service';
 import {Event} from '../../models/Event';
 import {TopicService} from '../TopicService';
+import { Topic } from 'src/app/models/Topic';
 
 @Injectable()
-export class AllEventsResolver implements Resolve<Event[]> {
+export class AllTopicsResolver implements Resolve<Topic[]> {
   constructor(private tps: TopicService) {}
 
   // @ts-ignore
-  resolve(route: ActivatedRoute, state: RouterStateSnapshot): Observable<Topic[]> {
+  resolve( state: RouterStateSnapshot): Observable<Topic[]> {
+    console.log("resolver")
     return this.tps.getAll();
   }
 

@@ -4,7 +4,7 @@ const Topic = require("../../models/Topic");
 const User = require("../../models/User");
 const Comment = require("../../models/Comment");
 
-router.post('/', (req, res, next) => {
+router.get('/', (req, res, next) => {
     Topic.find({})
         .then((data) => {
             res.status(202).json(data);

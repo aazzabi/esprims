@@ -1,25 +1,56 @@
 <section class="section bg-secondary">
-  <br/>
-  <br/>
-  <br/>
+  <br />
+  <br />
+  <br />
   <div class="container">
     <div class="row row-grid align-items-center">
       <div class="col-md-6">
         <div class="card bg-default shadow border-0">
-          <img
-            src="../../../../assets/nidhal/assets/img/bg-img/game2.jpg"
-            class="card-img-top"
-          />
+          <ng-container *ngIf="topic[0].categorie == 'Gameplay'">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRJmII-B2KnU2OhBLEeIHBB8qEhJuZ9ucVjaxIqNKXwAEGG9Xan"
+              class="card-img-top"
+            />
+          </ng-container>
+          <ng-container *ngIf="topic[0].categorie == 'Bugs'">
+            <img
+              src="https://i.ytimg.com/vi/xyAv5QXfBSE/maxresdefault.jpg"
+              class="card-img-top"
+            />
+          </ng-container>
+          <ng-container *ngIf="topic[0].categorie == 'Comptetions'">
+            <img
+              src="https://www.insidescandinavianbusiness.com/img/big/E-gamer.jpg"
+              class="card-img-top"
+            />
+          </ng-container>
+          <ng-container *ngIf="topic[0].categorie == 'Claims'">
+            <img
+              src="https://c4.wallpaperflare.com/wallpaper/284/1010/379/quote-minimalism-gas-masks-typography-wallpaper-preview.jpg"
+              class="card-img-top"
+            />
+          </ng-container>
+          <ng-container *ngIf="topic[0].categorie == 'Others'">
+            <img
+              src="https://img.chefdentreprise.com/Images/Breves/breve50234-0.JPG"
+              class="card-img-top"
+            />
+          </ng-container>
         </div>
       </div>
       <div class="col-md-6">
         <div class="pl-md-5">
-          <h3 class="h4 text-default font-weight-bold mb-4">
-            topic name
-            <small class="d-block"> Topic Title </small>
-            <small class="d-block"> <i class="fa fa-eye"></i> nb seen </small>
-          </h3>
-          <p class="lead">description</p>
+          <h1 class="h1 text-default font-weight-bold ">
+            {{ topic[0].title }}
+          </h1>
+
+          <small class="d-block mb-2"> {{ topic[0].categorie }} </small>
+
+          <small class="d-block">
+            <i class="fa fa-user"></i> {{ topic[0].createdBy }}
+          </small>
+
+          <p class="lead">{{ topic[0].description }}</p>
         </div>
       </div>
     </div>
@@ -28,11 +59,11 @@
 <section class="section section-components">
   <div class="container">
     <!-- comments -->
-    <br/>
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <br />
     <h5 class="text-primary">
-      {{comments.length}} comments &nbsp; <i class="fa fa-comment"></i>
+      {{ comments.length }} comments &nbsp; <i class="fa fa-comment"></i>
     </h5>
 
     <div *ngFor="let comment of data">
@@ -45,7 +76,7 @@
               class="img-fluid rounded-circle shadow"
               style="width: 150px;"
             />
-            <br/>
+            <br />
             &nbsp;
             <small class="d-block text-uppercase font-weight-bold mb-4">
               {{ comment.user.name }}
@@ -56,7 +87,9 @@
               {{ comment.text }}
             </p>
             <ng-container *ngIf="comment.user.id === user_connected_id">
-              <button class="text-warning" (click)="deleteComment(comment._id)">delete</button>
+              <button class="text-warning" (click)="deleteComment(comment._id)">
+                delete
+              </button>
             </ng-container>
           </div>
         </div>
@@ -65,7 +98,6 @@
   </div>
 </section>
 <section class="section section-lg pt-0">
-
   <div class="container">
     <div class="card bg-gradient-warning shadow-lg border-0">
       <div class="p-5">
@@ -85,12 +117,18 @@
               ></textarea>
             </div>
             <div class="col-lg-3 ml-lg-auto">
-              <button type="button" class="btn btn-lg btn-block btn-white" [disabled]="!addCommentFrom.valid"  (click)="addComment()">Send</button>
+              <button
+                type="button"
+                class="btn btn-lg btn-block btn-white"
+                [disabled]="!addCommentFrom.valid"
+                (click)="addComment()"
+              >
+                Send
+              </button>
             </div>
           </div>
         </form>
       </div>
     </div>
   </div>
-
 </section>

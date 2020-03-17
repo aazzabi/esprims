@@ -19,7 +19,7 @@ import {AuthIntercepter} from './services/security/auth.intercepter';
 import {RoleGuard} from './services/security/role.guard';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
-import {EventService} from './services/managers/event.service';
+import {EventServices} from './services/EventServices';
 
 import {ImageUploadModule} from './SharedComponent/image-upload/image-upload.module';
 import {AngularFireModule} from '@angular/fire';
@@ -52,7 +52,7 @@ import {StorageService} from "./services/security/storage.service";
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [
     LoginService,
-    EventService,
+    EventServices,
     RoleGuard,
     TopicService,
     AlertService,
