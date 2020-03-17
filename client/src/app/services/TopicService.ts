@@ -12,11 +12,15 @@ export class TopicService {
   }
 
   public getAll(): Observable<Topic[]> {
-    return this.http.get<Topic[]>('http://127.0.0.1:5000/api/topic/topics');
+    return this.http.get<Topic[]>('http://127.0.0.1:5000/api/topic/');
   }
 
   public getAllCommentsByTopic(idTopic: number): Observable<Comment[]> {
     return this.http.get<Comment[]>('http://127.0.0.1:5000/api/topic/commentsByTopicId/' + idTopic);
+  }
+
+  public getAllByUserId(idUser: number): Observable<Topic[]> {
+    return this.http.get<Topic[]>('http://127.0.0.1:5000/api/topic/byUser/' + idUser);
   }
 
   public getById(idTopic): Observable<Comment> {
@@ -37,5 +41,9 @@ export class TopicService {
 
   public deleteComment(id): Observable<Comment> {
     return this.http.get<Comment>('http://127.0.0.1:5000/api/topic/deleteComment/' + id);
+  }
+
+  public deleteTopic(id: any) {
+    return this.http.get<Topic>('http://127.0.0.1:5000/api/topic/deleteTopic/' + id);
   }
 }

@@ -4,7 +4,7 @@ const Topic = require("../../models/Topic");
 const User = require("../../models/User");
 const Comment = require("../../models/Comment");
 
-router.post('/', (req, res, next) => {
+router.get("/", (req, res, next) => {
     Topic.find({})
         .then((data) => {
             res.status(202).json(data);
@@ -15,6 +15,18 @@ router.post('/', (req, res, next) => {
 });
 router.get("/:id", async (req, res) => {
     Topic.find({"_id": req.params.id}).populate('comments')
+        .then((data) => {
+            res.set('Content-Type', 'text/html');
+            res.status(202).send(data);
+        })
+        .catch(error => {
+            res.set('Content-Type', 'text/html');
+            res.status(500).send(error);
+        });
+});
+
+router.get("/byUser/:id", async (req, res) => {
+    Topic.find({"createdBy": req.params.id})
         .then((data) => {
             res.set('Content-Type', 'text/html');
             res.status(202).send(data);
@@ -83,6 +95,18 @@ router.get("/deleteComment/:id", async (req, res) => {
         .then(() => {
             res.set('Content-Type', 'text/html');
             res.status(202).send("The comment Was Deleted Successfully !");
+        })
+        .catch(error => {
+            res.set('Content-Type', 'text/html');
+            res.status(500).send(error);
+        });
+});
+router.get("/deleteTopic/:id", async (req, res) => {
+    Topic.deleteOne({"_id": req.params.id})
+        .then(() => {
+            console.log('ok');
+            res.set('Content-Type', 'text/html');
+            res.status(202).send("The topic Was Deleted Successfully !");
         })
         .catch(error => {
             res.set('Content-Type', 'text/html');

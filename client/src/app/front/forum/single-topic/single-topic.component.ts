@@ -37,15 +37,11 @@ export class SingleTopicComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.topic = this.route.snapshot.data['topicSelected'];
-    this.comments = this.route.snapshot.data['comments'];
-    console.log(this.topic[0]['comments']);
-    console.log(this.comments.length);
   }
 
   ngOnInit() {
     this.userLogged = this.userService.getIdUserByToken();
-    this.topic = this.route.snapshot.data['topicSelected'];
+    this.topic = this.route.snapshot.data['topicSelected'][0];
     this.comments = this.route.snapshot.data['comments'];
   }
 
@@ -83,7 +79,7 @@ export class SingleTopicComponent implements OnInit {
     this.topicService.getAllCommentsByTopic(this.topic[0]['_id']).subscribe(
       data => {
         this.comments = data;
-      });
+    });
   }
 
 
