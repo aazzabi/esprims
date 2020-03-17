@@ -17,7 +17,13 @@ export class TopicService {
     return this.http.get<Comment>('http://127.0.0.1:5000/api/topic/' + idTopic );
   }
 
+  public addTopic(topic): Observable<Topic> {
+    return this.http.post<Topic>('http://127.0.0.1:5000/api/topic/addCommentToTopic/', topic);
+  }
   public addCommentToTopic(idTopic, idUser, comment): Observable<Topic> {
+    // console.log(idTopic);
+    // console.log(idUser);
+    // console.log(comment);
     return this.http.post<Topic>('http://127.0.0.1:5000/api/topic/addCommentToTopic/' + idTopic + '/' + idUser, comment);
   }
   public commentsByTopicId(idTopic): Observable<Comment> {

@@ -1,7 +1,7 @@
 <section class="section bg-secondary">
-  <br />
-  <br />
-  <br />
+  <br/>
+  <br/>
+  <br/>
   <div class="container">
     <div class="row row-grid align-items-center">
       <div class="col-md-6">
@@ -28,11 +28,11 @@
 <section class="section section-components">
   <div class="container">
     <!-- comments -->
-    <br />
-    <br />
-    <br />
+    <br/>
+    <br/>
+    <br/>
     <h5 class="text-primary">
-     {{comments.length}} comments &nbsp; <i class="fa fa-comment"></i>
+      {{comments.length}} comments &nbsp; <i class="fa fa-comment"></i>
     </h5>
 
     <div *ngFor="let comment of data">
@@ -45,7 +45,7 @@
               class="img-fluid rounded-circle shadow"
               style="width: 150px;"
             />
-            <br />
+            <br/>
             &nbsp;
             <small class="d-block text-uppercase font-weight-bold mb-4">
               {{ comment.user.name }}
@@ -66,34 +66,31 @@
 </section>
 <section class="section section-lg pt-0">
 
-    <div class="container">
-      <div class="card bg-gradient-warning shadow-lg border-0">
-        <div class="p-5">
-          <form>
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="text-white">
-                  Write a response &nbsp; <i class="fa fa-reply"></i>
-                </h3>
+  <div class="container">
+    <div class="card bg-gradient-warning shadow-lg border-0">
+      <div class="p-5">
+        <form [formGroup]="addCommentFrom">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <h3 class="text-white">
+                Write a response <i class="fa fa-reply"></i>
+              </h3>
 
-                <textarea
-                  class="form-control form-control-alternative"
-                  name="post"
-                  #post
-                  rows="4"
-                  cols="80"
-                  placeholder="Response .."
-                ></textarea>
-              </div>
-              <div class="col-lg-3 ml-lg-auto">
-                <button type="button" class="btn btn-lg btn-block btn-white"(click)="addComment(post.value)">
-                  Send
-                </button>
-              </div>
+              <textarea
+                class="form-control form-control-alternative"
+                formControlName="post"
+                rows="4"
+                cols="80"
+                placeholder="Response .."
+              ></textarea>
             </div>
-          </form>
-        </div>
+            <div class="col-lg-3 ml-lg-auto">
+              <button type="button" class="btn btn-lg btn-block btn-white" [disabled]="!addCommentFrom.valid"  (click)="addComment()">Send</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-=
+  </div>
+
 </section>

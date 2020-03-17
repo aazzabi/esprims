@@ -5,7 +5,7 @@ const TopicSchema = new mongoose.Schema({
     createdAt: {type: Date},
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment', required: false }],
     createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false },
-    categorie: {type: String, required: true, enum: ["Gameplay", "Bugs", "General", "Comptetions", "Claims", "Others"]},
+    categorie: {type: String, required: true, enum: ["Gameplay", "Bugs","Comptetions", "Claims", "Others"]},
 
 });
 module.exports = Topic = mongoose.model("topic", TopicSchema);

@@ -6,6 +6,7 @@ import { ForumTopicsComponent } from './forum/forum-topics/forum-topics.componen
 import { SingleTopicComponent } from './forum/single-topic/single-topic.component';
 import {GetTopicResolvers} from '../services/resolvers/get.topic.resolvers';
 import {GetCommentsResolvers} from '../services/resolvers/get.comments.resolver';
+import {AddTopicComponent} from './forum/addTopic/add-topic.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       {path: '', loadChildren: '../layouts/auth-layout/auth-layout.module#AuthLayoutModule'},
       {path: 'claim', loadChildren: './claim/claim.module#ClaimModule'},
       { path: 'topics', component: ForumTopicsComponent },
+      { path: 'topics/add', component: AddTopicComponent},
       { path: 'topics/:id', component: SingleTopicComponent, resolve: { topicSelected: GetTopicResolvers, comments: GetCommentsResolvers }},
     ]
   },

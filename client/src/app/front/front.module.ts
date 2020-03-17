@@ -11,6 +11,9 @@ import { SingleTopicComponent } from './forum/single-topic/single-topic.componen
 import {GetTopicResolvers} from '../services/resolvers/get.topic.resolvers';
 import {GetCommentsResolvers} from '../services/resolvers/get.comments.resolver';
 import {UserServices} from '../services/UserServices';
+import {AddTopicComponent} from './forum/addTopic/add-topic.component';
+import {AlertComponent} from './alerteJumbotron/alert.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -18,8 +21,15 @@ import {UserServices} from '../services/UserServices';
     BrowserModule,
     FrontRouting,
     ClaimModule,
+    ReactiveFormsModule,
   ],
-  declarations: [ FrontComponent, HomeComponent, ForumTopicsComponent, SingleTopicComponent ],
+  declarations: [
+    FrontComponent,
+    AlertComponent,
+    HomeComponent,
+    AddTopicComponent,
+    ForumTopicsComponent,
+    SingleTopicComponent ],
   providers: [
     GetTopicResolvers,
     GetCommentsResolvers,

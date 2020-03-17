@@ -1,8 +1,14 @@
+import {Topic} from "./Topic";
+
 export class Comment {
 
     public id: number;
-    public topic: string;
+    public topic: Topic;
+    public topicId: number;
+    public uid: number;
     public text: string;
-    public date: string;  
+
+  public constructor(text: string) {
+    this.text = text;
   }
-  
+}
