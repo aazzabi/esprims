@@ -44,10 +44,10 @@ router.post("/add", async (req, res) => {
 });
 router.post("/addCommentToTopic/:idTopic/:idUser", async (req, res) => {
     const topic = await Topic.findById(req.params.idTopic);
-    const userConnected = await User.findById(req.params.userId);
+    const userConnected = await User.findById(req.params.idUser);
     Comment.create({
         text: req.body.text,
-        user: userConnected,
+        commentedBy: userConnected,
         commentedAt: new Date(),
         topic: topic,
     }).then(async (data) => {
