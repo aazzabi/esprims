@@ -32,5 +32,4 @@ export class AllEventsComponent implements OnInit {
       this.allEvents();
     });
   }
- 
 }
