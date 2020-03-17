@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Topic = require("../../models/Topic");
+const User = require("../../models/User");
 const Comment = require("../../models/Comment");
 
 router.post('/', (req, res, next) => {
@@ -28,7 +29,7 @@ router.post("/add", async (req, res) => {
         title: req.body.title,
         description: req.body.description,
         createdAt: new Date(),
-        user: req.body.user,
+        createdBy: req.body.user,
         categorie: req.body.categorie,
     })
         .then((data) => {
