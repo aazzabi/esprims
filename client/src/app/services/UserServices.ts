@@ -21,10 +21,16 @@ export class UserServices {
   private currentUserSubject: BehaviorSubject<User>;
   public token: string;
   private loggedUser: string;
+  private user;
 
   constructor(public http: HttpClient) {
   }
 
+  addUser(u: User) {
+    console.log(u);
+    const body = JSON.stringify(u);
+    return this.http.post('http://127.0.0.1:5000/api/users/register', u);
+  }
   public auth(email, password): Observable<User> {
     console.log(JSON.stringify(email, password));
     const myData = {email, password};
@@ -63,8 +69,7 @@ export class UserServices {
 
   decodeToken() {
     const token = StorageService.get('currentUser');
-    const decoded = jwt_decode(token);
-    return decoded;
+    return jwt_decode(token);
   }
 
   getIdUserByToken() {

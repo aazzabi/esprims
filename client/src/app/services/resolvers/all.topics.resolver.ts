@@ -11,7 +11,7 @@ export class AllTopicsResolver implements Resolve<Topic[]> {
 
   // @ts-ignore
   resolve( state: RouterStateSnapshot): Observable<Topic[]> {
-    console.log("resolver")
+    console.log('resolver')
     return this.tps.getAll();
   }
 

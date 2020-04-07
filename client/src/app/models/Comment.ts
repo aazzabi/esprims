@@ -9,6 +9,8 @@ export class Comment {
     public uid: number;
     public commentedBy: User;
     public text: string;
+    public likers: User[];
+    public dislikers: User[];
 
   public constructor(text: string) {
     this.text = text;

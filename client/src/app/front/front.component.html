@@ -70,11 +70,9 @@
   style="height: 130px; margin-bottom: 0px !important; background-color: $dark-color !important;"
 >
   <div class="container">
-    <a class="navbar-brand" href="#"
-    ><img
-      src="../../assets/nidhal/assets/img/core-img/logo.png"
-      style="margin-top: -50px; width:130px; height:130px"
-    /></a>
+    <a class="navbar-brand" routerLink="/">
+      <img src="../../assets/nidhal/assets/img/core-img/logo.png"  style="margin-top: -50px; width:130px; height:130px"/>
+    </a>
 
     <button
       class="navbar-toggler"
@@ -91,7 +89,7 @@
       <div class="navbar-collapse-header">
         <div class="row">
           <div class="col-6 collapse-brand">
-            <a href="index.html">
+            <a  routerLink="/">
               <img src="../../../assets/front/img/brand/lacasa.png"/>
             </a>
           </div>
@@ -114,7 +112,10 @@
 
       <ul class="navbar-nav ml-lg-auto">
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="#">About</a>
+          <a class="nav-link nav-link-icon" routerLink="/">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" routerLink="/about">About</a>
         </li>
         <li class="nav-item">
           <a class="nav-link nav-link-icon" routerLink="/events">Events </a>
@@ -122,16 +123,16 @@
         <li class="nav-item">
           <a class="nav-link nav-link-icon" routerLink="/topics">Forum </a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" style="margin-top: -6px;">
           <a class="nav-link nav-link-icon dropdown" id="navbar-default_dropdown_1" (click)="showDropdown()"
              role="button"
              data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">Settings</a>
+             aria-haspopup="true" aria-expanded="false"><i class="fas fa-2x fa-cog"></i></a>
           <div class="dropdown-menu dropdown-menu-right {{bool}}" [ngClass]="(bool==true)? 'show': ''"
                aria-labelledby="navbar-default_dropdown_1">
-            <a class="nav-link nav-link-icon sousItem" *ngIf="userLogged != null" routerLink="/dash">Dashboard </a>
+            <a class="nav-link nav-link-icon sousItem" *ngIf="(userLogged != null) && (userLogged.role =='ADMIN') " routerLink="/dash/events">Dashboard </a>
             <a class="nav-link nav-link-icon sousItem" *ngIf="userLogged != null" (click)="logout()">Se déconnecter </a>
-            <a class="nav-link nav-link-icon sousItem" *ngIf="userLogged == null" routerLink="/login">Se connecter </a>
+            <a class="nav-link nav-link-icon sousItem" *ngIf="userLogged == null" (click)="goToLogin()">Se connecter </a>
           </div>
         </li>
       </ul>

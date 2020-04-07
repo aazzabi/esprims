@@ -767,7 +767,7 @@
             // part of the mouse compatibility events on first tap - the carousel
             // would stop cycling until user tapped out of it;
             // here, we listen for touchend, explicitly pause the carousel
-            // (as if it's the second time we tap on it, mouseenter compat event
+            // (as if it's the second time we tap on it, mouseenter compat Events
             // is NOT fired) and after a timeout (to allow for mouse compatibility
             // events to fire) we explicitly restart cycling
             $$$1(this._element).on(Event.TOUCHEND, function () {
@@ -2446,17 +2446,17 @@
   }
 
   /**
-   * Setup needed event listeners used to update the popper position
+   * Setup needed Events listeners used to update the popper position
    * @method
    * @memberof Popper.Utils
    * @private
    */
   function setupEventListeners(reference, options, state, updateBound) {
-    // Resize event listener on window
+    // Resize Events listener on window
     state.updateBound = updateBound;
     getWindow(reference).addEventListener('resize', state.updateBound, { passive: true });
 
-    // Scroll event listener on scroll parents
+    // Scroll Events listener on scroll parents
     var scrollElement = getScrollParent(reference);
     attachToScrollParents(scrollElement, 'scroll', state.updateBound, state.scrollParents);
     state.scrollElement = scrollElement;
@@ -2478,16 +2478,16 @@
   }
 
   /**
-   * Remove event listeners used to update the popper position
+   * Remove Events listeners used to update the popper position
    * @method
    * @memberof Popper.Utils
    * @private
    */
   function removeEventListeners(reference, state) {
-    // Remove resize event listener on window
+    // Remove resize Events listener on window
     getWindow(reference).removeEventListener('resize', state.updateBound);
 
-    // Remove scroll event listener on scroll parents
+    // Remove scroll Events listener on scroll parents
     state.scrollParents.forEach(function (target) {
       target.removeEventListener('scroll', state.updateBound);
     });
@@ -3863,7 +3863,7 @@
 
       var eventsEnabled = this.options.eventsEnabled;
       if (eventsEnabled) {
-        // setup event listeners, they will take care of update the position in specific situations
+        // setup Events listeners, they will take care of update the position in specific situations
         this.enableEventListeners();
       }
 
@@ -4112,7 +4112,7 @@
           this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig());
         } // If this is a touch-enabled device we add extra
         // empty mouseover listeners to the body's immediate children;
-        // only needed because of broken event delegation on iOS
+        // only needed because of broken Events delegation on iOS
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
 
@@ -5266,7 +5266,7 @@
           });
           $$$1(tip).addClass(ClassName.SHOW); // If this is a touch-enabled device we add extra
           // empty mouseover listeners to the body's immediate children;
-          // only needed because of broken event delegation on iOS
+          // only needed because of broken Events delegation on iOS
           // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
           if ('ontouchstart' in document.documentElement) {

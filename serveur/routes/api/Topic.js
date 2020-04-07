@@ -5,7 +5,7 @@ const User = require("../../models/User");
 const Comment = require("../../models/Comment");
 
 router.get("/", (req, res, next) => {
-    Topic.find({})
+    Topic.find({}).populate('comments')
         .then((data) => {
             res.status(202).json(data);
         })
@@ -15,6 +15,17 @@ router.get("/", (req, res, next) => {
 });
 router.get("/:id", async (req, res) => {
     Topic.find({"_id": req.params.id}).populate('comments')
+        .then((data) => {
+            res.set('Content-Type', 'text/html');
+            res.status(202).send(data);
+        })
+        .catch(error => {
+            res.set('Content-Type', 'text/html');
+            res.status(500).send(error);
+        });
+});
+router.get("/comment/:id", async (req, res) => {
+    Comment.find({"_id": req.params.id}).populate('commentedBy')
         .then((data) => {
             res.set('Content-Type', 'text/html');
             res.status(202).send(data);
@@ -65,7 +76,7 @@ router.post("/addCommentToTopic/:idTopic/:idUser", async (req, res) => {
     }).then(async (data) => {
         const tp = await Topic.update({"_id": req.params.idTopic}, {"$push": {"comments": data}});
         res.set('Content-Type', 'application/json');
-        res.status(202).json(topic);
+        res.status(202).json(data);
     })
         .catch(error => {
             console.log(error);
@@ -114,4 +125,31 @@ router.get("/deleteTopic/:id", async (req, res) => {
         });
 });
 
+
+router.post("/like/:idComment/:idUser", async (req, res) => {
+    const u = await User.find({"_id": req.params.idUser});
+    Comment.update({"_id": req.params.idComment}, {"$addToSet": {"likers": u}}).then(async (data) => {
+        console.log(data);
+        const mm =  await Comment.findOneAndUpdate({"_id": req.params.idComment }, {$pull: { dislikers: req.params.idUser}});
+        res.set('Content-Type', 'application/json');
+        const c = await Comment.find({"_id": req.params.idComment});
+        res.status(202).json(c);
+    }, error => {
+        res.set('Content-Type', 'application/json');
+        res.status(500).send(error);
+    });
+});
+router.post("/dislike/:idComment/:idUser", async (req, res) => {
+    const u = await User.find({"_id": req.params.idUser});
+    Comment.update({"_id": req.params.idComment}, {"$addToSet": {"dislikers": u}})
+        .then(async (data) => {
+            const mm =  await Comment.findOneAndUpdate({"_id": req.params.idComment }, {$pull: { likers: req.params.idUser}});
+            res.set('Content-Type', 'application/json');
+            const c = await Comment.find({"_id": req.params.idComment});
+            res.status(202).json(c);
+        }, error => {
+            res.set('Content-Type', 'application/json');
+            res.status(500).send(error);
+        });
+});
 module.exports = router;

@@ -32,6 +32,7 @@ export class TopicService {
   }
 
   public addCommentToTopic(idTopic, idUser, comment): Observable<Topic> {
+    console.log('addCommentToTopic ');
     return this.http.post<Topic>('http://127.0.0.1:5000/api/topic/addCommentToTopic/' + idTopic + '/' + idUser, comment);
   }
 

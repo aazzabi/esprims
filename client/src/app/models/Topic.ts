@@ -1,4 +1,5 @@
 import {User} from './User';
+import {Comment} from './Comment';
 
 export  class Topic {
   _id: number;
@@ -9,6 +10,8 @@ export  class Topic {
   createdById: number;
   categorie: string;
   comments: Comment[];
+  cs: any;
+  collapsed: boolean;
 
   public constructor(title: string, d: string, categorie: string, uid: number) {
     this.title = title;

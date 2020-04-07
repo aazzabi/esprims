@@ -9,9 +9,8 @@ export class AllEventsResolver implements Resolve<Event> {
   constructor(private eventService: EventServices) {}
 
    // @ts-ignore
-   resolve( state: RouterStateSnapshot): Observable<Event> {
-    console.log("resolver")
-    return this.eventService.allEvents(); 
+   resolve( state: RouterStateSnapshot): Observable<Event[]> {
+    return this.eventService.allEvents();
   }
 
 }

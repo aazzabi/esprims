@@ -12,4 +12,10 @@ export class User {
   public phoneNumber: string;
   public confirmationToken: string;
 
+  constructor(name: string, email: string, password: string, role: string) {
+    this.name = name;
+    this.password = password;
+    this.email = email;
+    this.role = 'CLIENT';
+  }
 }

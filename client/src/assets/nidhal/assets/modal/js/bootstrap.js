@@ -607,7 +607,7 @@
     NEXT: 'carousel-item-next',
     PREV: 'carousel-item-prev',
     ITEM: 'carousel-item',
-    POINTER_EVENT: 'pointer-event'
+    POINTER_EVENT: 'pointer-Events'
   };
   var Selector$2 = {
     ACTIVE: '.active',
@@ -830,7 +830,7 @@
           // part of the mouse compatibility events on first tap - the carousel
           // would stop cycling until user tapped out of it;
           // here, we listen for touchend, explicitly pause the carousel
-          // (as if it's the second time we tap on it, mouseenter compat event
+          // (as if it's the second time we tap on it, mouseenter compat Events
           // is NOT fired) and after a timeout (to allow for mouse compatibility
           // events to fire) we explicitly restart cycling
           _this3.pause();
@@ -1659,7 +1659,7 @@
         this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig());
       } // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
-      // only needed because of broken event delegation on iOS
+      // only needed because of broken Events delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
 
@@ -2212,7 +2212,7 @@
       /**
        * `document` has 2 events `Event.FOCUSIN` and `Event.CLICK_DATA_API`
        * Do not move `document` in `htmlElements` array
-       * It will remove `Event.CLICK_DATA_API` event that should remain
+       * It will remove `Event.CLICK_DATA_API` Events that should remain
        */
 
       $(document).off(Event$5.FOCUSIN);
@@ -2991,7 +2991,7 @@
         });
         $(tip).addClass(ClassName$6.SHOW); // If this is a touch-enabled device we add extra
         // empty mouseover listeners to the body's immediate children;
-        // only needed because of broken event delegation on iOS
+        // only needed because of broken Events delegation on iOS
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
         if ('ontouchstart' in document.documentElement) {

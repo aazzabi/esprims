@@ -29,6 +29,8 @@ import {environment} from '../environments/environment';
 import {TopicService} from './services/TopicService';
 import {AlertService} from './services/managers/AlerteService';
 import {StorageService} from './services/security/storage.service';
+import {ErrorInterceptor} from './services/security/error.interceter';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   imports: [
@@ -47,9 +49,13 @@ import {StorageService} from './services/security/storage.service';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     ImageUploadModule,
-
+    NgxPaginationModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
+  declarations: [
+    AppComponent,
+    AdminLayoutComponent,
+    AuthLayoutComponent
+  ],
   providers: [
     LoginService,
     EventServices,
@@ -59,9 +65,9 @@ import {StorageService} from './services/security/storage.service';
     StorageService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthIntercepter,
+      useClass: ErrorInterceptor,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {UserServices} from '../services/UserServices';
 import {Router} from '@angular/router';
+import {StorageService} from '../services/security/storage.service';
 
 @Component({
   selector: 'app-back',
@@ -14,6 +15,8 @@ export class BackComponent {
     private userService: UserServices,
     private router: Router,
   ) {
-    console.log(this.userService.decodeToken().user.role);
+    if (StorageService.get('currentUser')) {
+      console.log(this.userService.decodeToken().user.role);
+    }
   }
 }

@@ -28,10 +28,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.userServices.login(this.model.email, this.model.password)
       .subscribe(
         (response: any) => {
-          if (this.returnUrl) {
-            this.router.navigateByUrl(this.returnUrl);
+          console.log(response);
+          if (this.userServices.decodeToken().user.role === 'ADMIN' ) {
+              this.router.navigateByUrl('/dash/events');
           } else {
-            this.router.navigate(['/']);
+              if (this.returnUrl) {
+                this.router.navigateByUrl(this.returnUrl);
+              } else {
+                this.router.navigateByUrl('/');
+                location.reload();
+              }
           }
         },
         error => console.log(error)
