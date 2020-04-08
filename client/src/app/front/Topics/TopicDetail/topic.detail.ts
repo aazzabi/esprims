@@ -37,7 +37,7 @@ export class TopicDetailComponent implements OnInit {
   addCommentFrom = new FormGroup({
     text: new FormControl('', [Validators.required]),
   });
-  const
+  const;
   auxDislike;
   auxLike;
 
@@ -155,14 +155,14 @@ export class TopicDetailComponent implements OnInit {
       this.topicService.addCommentToTopic(t._id, this.currentUser.id, com)
         .subscribe(
           response => {
-            console.log(response , 'response');
-            console.log(t.comments , 't.comments avant');
-            t.comments.push(response);
-            this.topicService.getAllCommentsByTopic(t._id).subscribe(
-              data => {
-                t.comments = data;
-              });
-            console.log(t.comments , 't.comments aprés');
+            console.log(response, 'response');
+            console.log(t.comments, 't.comments avant');
+            t.cs.push(response);
+            // this.topicService.getAllCommentsByTopic(t._id).subscribe(
+            //   data => {
+            //     t.cs = data;
+            //   });
+            console.log(t.cs, 't.comments aprés');
             // this.getAllComments();
             this.addCommentFrom.value.text = '';
             // this.router.navigate(['/topics/', this.topic['_id']]);
@@ -177,11 +177,11 @@ export class TopicDetailComponent implements OnInit {
     }
   }
 
-  deleteComment(t: Topic, c: Comment) {
+  deleteComment(t: Topic, c: Comment, i: number) {
     this.topicService.deleteComment(c._id).subscribe(data => {
       console.log(data);
     });
-    t.comments.splice(c._id, 1);
+    t.cs.splice(i, 1);
     // this.getAllComments(t._id);
   }
 

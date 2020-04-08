@@ -22,7 +22,7 @@
   <!-- Comments -->
   <div class="comment-card ml-5" *ngIf="(topic.comments && topic.collapsed ===true)">
     <!-- Single comment -->
-    <div *ngFor="let c of topic.cs">
+    <div *ngFor="let c of topic.cs, let i= index">
 <!--      <CommentDetail [comment]="c"></CommentDetail>-->
       <small class="row comment-item text-muted">
         <div class="col-md-2">
@@ -51,7 +51,7 @@
             <i class="far fa-thumbs-down ml-1"></i>
           </button>
           <button class="text-warning" *ngIf="c.commentedBy._id === currentUser.id"
-                  (click)="deleteComment(topic, c)"><i class="fa fa-trash"></i>
+                  (click)="deleteComment(topic, c, i)"><i class="fa fa-trash"></i>
           </button>
         </div>
       </small>
