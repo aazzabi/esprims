@@ -119,7 +119,7 @@ app.controller('myPageCtrl', function($scope,$http){
 	/* ------------------------------ */
 	/* ANIMATED COUNTER
 	/* ------------------------------ */
-	
+
 	$scope.counterInit = function() {
 		$('.statistic').on('inview.uk.scrollspy', function(){
 			$scope.numAnim1 = new CountUp('statistic_counter_1', 0, 100, 0, 3.5);
@@ -132,7 +132,7 @@ app.controller('myPageCtrl', function($scope,$http){
 			$scope.numAnim4.start();
 		});
 	}
-	
+
 	$scope.counterInit();
 
 	/* ------------------------------ */
@@ -181,7 +181,7 @@ app.controller('myPageCtrl', function($scope,$http){
 		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 			var ng_click = $('[data-ng-click]');
 			ng_click.each(function() {
-				$(this).attr('data-ng-touchstart','scrollNav($event)').removeAttr('data-ng-click');
+				$(this).attr('data-ng-touchstart','scrollNav($Events)').removeAttr('data-ng-click');
 			})
 		}
 	}
@@ -544,7 +544,7 @@ app.controller('myPageCtrl', function($scope,$http){
 								.find('.error_response').html(resp.msg).fadeIn(1000);
 						}
 					},
-					url: "http://google.us3.list-manage.com/subscribe/post?u=54cac12d99d1b2a0c0e0177b4&amp;id=d5469b7ba3" // Replace this with your own mailchimp post URL. Don't remove the "". Just paste the url inside "". 
+					url: "http://google.us3.list-manage.com/subscribe/post?u=54cac12d99d1b2a0c0e0177b4&amp;id=d5469b7ba3" // Replace this with your own mailchimp post URL. Don't remove the "". Just paste the url inside "".
 				});
 			})(i);
 		}

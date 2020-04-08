@@ -61,13 +61,7 @@ export class LoginService {
 
             // store email and jwt token in local storage to keep user logged in between page refreshes
             const expires = 1000 * 60 * 30;
-            StorageService.set('currentUser', {
-                token: t,
-                role: response.role,
-                email: email,
-                id: response['id'],
-                userId: response['userId']},
-              expires);
+            StorageService.set('currentUser', {token: t}, expires);
             return true;
           } else {
             // return false to indicate failed login

@@ -11,4 +11,14 @@ export const environment = {
     baseUrl: 'http://localhost:9080',
     opts: {}
   },
+  firebaseConfig : {
+    apiKey: "AIzaSyAIvyZ_y1wNO0MXhDGhKoBjYc_VrCBQIhU",
+      authDomain: "angulargalery.firebaseapp.com",
+      databaseURL: "https://angulargalery.firebaseio.com",
+      projectId: "angulargalery",
+      storageBucket: "angulargalery.appspot.com",
+      messagingSenderId: "846145992041",
+      appId: "1:846145992041:web:0715512349afc97a7579f8",
+      measurementId: "G-TBV5YJFQ9G"
+  }
 };

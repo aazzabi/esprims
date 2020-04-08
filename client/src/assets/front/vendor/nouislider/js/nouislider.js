@@ -1123,7 +1123,7 @@
             }
         }
 
-        // The tooltips option is a shorthand for using the 'update' event.
+        // The tooltips option is a shorthand for using the 'update' Events.
         function tooltips() {
             removeTooltips();
 
@@ -1305,7 +1305,7 @@
                     stepSize = pctDifference / realSteps;
 
                     // Divide all points evenly, adding the correct number to this subrange.
-                    // Run up to <= so that 100% gets a point, event if ignoreLast is set.
+                    // Run up to <= so that 100% gets a point, Events if ignoreLast is set.
                     for (q = 1; q <= realSteps; q += 1) {
                         // The ratio between the rounded value and the actual size might be ~1% off.
                         // Correct the percentage offset by the number of points
@@ -1436,7 +1436,7 @@
             var method = function(e) {
                 e = fixEvent(e, data.pageOffset, data.target || element);
 
-                // fixEvent returns false if this event has a different target
+                // fixEvent returns false if this Events has a different target
                 // when handling (multi-) touch events;
                 if (!e) {
                     return false;
@@ -1474,13 +1474,13 @@
 
                 e.calcPoint = e.points[options.ort];
 
-                // Call the event handler with the event [ and additional data ].
+                // Call the Events handler with the Events [ and additional data ].
                 callback(e, data);
             };
 
             var methods = [];
 
-            // Bind a closure on the target for every event type.
+            // Bind a closure on the target for every Events type.
             events.split(" ").forEach(function(eventName) {
                 element.addEventListener(eventName, method, supportsPassive ? { passive: true } : false);
                 methods.push([eventName, method]);
@@ -1489,11 +1489,11 @@
             return methods;
         }
 
-        // Provide a clean event with standardized offset values.
+        // Provide a clean Events with standardized offset values.
         function fixEvent(e, pageOffset, eventTarget) {
-            // Filter the event to register the type, which can be
+            // Filter the Events to register the type, which can be
             // touch, mouse or pointer. Offset changes need to be
-            // made on an event specific basis.
+            // made on an Events specific basis.
             var touch = e.type.indexOf("touch") === 0;
             var mouse = e.type.indexOf("mouse") === 0;
             var pointer = e.type.indexOf("pointer") === 0;
@@ -1649,7 +1649,7 @@
 
         // Bind move events on document.
         function eventStart(event, data) {
-            // Ignore event if any handle is disabled
+            // Ignore Events if any handle is disabled
             if (data.handleNumbers.some(isHandleDisabled)) {
                 return false;
             }
@@ -1666,15 +1666,15 @@
                 addClass(handle, options.cssClasses.active);
             }
 
-            // A drag should never propagate up to the 'tap' event.
+            // A drag should never propagate up to the 'tap' Events.
             event.stopPropagation();
 
-            // Record the event listeners.
+            // Record the Events listeners.
             var listeners = [];
 
             // Attach the move and end events.
             var moveEvent = attachEvent(actions.move, scope_DocumentElement, eventMove, {
-                // The event target has changed so we need to propagate the original one so that we keep
+                // The Events target has changed so we need to propagate the original one so that we keep
                 // relying on it to extract target touches.
                 target: event.target,
                 handle: handle,
@@ -1704,7 +1704,7 @@
             });
 
             // We want to make sure we pushed the listeners in the listener list rather than creating
-            // a new one as it has already been passed to the event handlers.
+            // a new one as it has already been passed to the Events handlers.
             listeners.push.apply(listeners, moveEvent.concat(endEvent, outEvent));
 
             // Text selection isn't an issue on touch devices,
@@ -1720,7 +1720,7 @@
 
                 // Prevent text selection when dragging the handles.
                 // In noUiSlider <= 9.2.0, this was handled by calling preventDefault on mouse/touch start/move,
-                // which is scroll blocking. The selectstart event is supported by FireFox starting from version 52,
+                // which is scroll blocking. The selectstart Events is supported by FireFox starting from version 52,
                 // meaning the only holdout is iOS Safari. This doesn't matter: text selection isn't triggered there.
                 // The 'cursor' flag is false.
                 // See: http://caniuse.com/#search=selectstart
@@ -1734,7 +1734,7 @@
 
         // Move closest handle to tapped location.
         function eventTap(event) {
-            // The tap event shouldn't propagate up
+            // The tap Events shouldn't propagate up
             event.stopPropagation();
 
             var proposal = calcPointToPercentage(event.calcPoint);
@@ -1765,7 +1765,7 @@
             }
         }
 
-        // Fires a 'hover' event for a hovered mouse/pen position.
+        // Fires a 'hover' Events for a hovered mouse/pen position.
         function eventHover(event) {
             var proposal = calcPointToPercentage(event.calcPoint);
 
@@ -1837,7 +1837,7 @@
 
         // Attach events to several slider parts.
         function bindSliderEvents(behaviour) {
-            // Attach the standard drag event to the handles.
+            // Attach the standard drag Events to the handles.
             if (!behaviour.fixed) {
                 scope_Handles.forEach(function(handle, index) {
                     // These events are only bound to the visual handle
@@ -1848,7 +1848,7 @@
                 });
             }
 
-            // Attach the tap event to the slider base.
+            // Attach the tap Events to the slider base.
             if (behaviour.tap) {
                 attachEvent(actions.start, scope_Base, eventTap, {});
             }
@@ -1875,7 +1875,7 @@
 
                     // When the range is fixed, the entire range can
                     // be dragged by the handles. The handle in the first
-                    // origin will propagate the start event upward,
+                    // origin will propagate the start Events upward,
                     // but it needs to be bound manually on the other.
                     if (behaviour.fixed) {
                         eventHolders.push(handleBefore.children[0]);
@@ -1892,12 +1892,12 @@
             }
         }
 
-        // Attach an event to this slider, possibly including a namespace
+        // Attach an Events to this slider, possibly including a namespace
         function bindEvent(namespacedEvent, callback) {
             scope_Events[namespacedEvent] = scope_Events[namespacedEvent] || [];
             scope_Events[namespacedEvent].push(callback);
 
-            // If the event bound is 'update,' fire it immediately for all handles.
+            // If the Events bound is 'update,' fire it immediately for all handles.
             if (namespacedEvent.split(".")[0] === "update") {
                 scope_Handles.forEach(function(a, index) {
                     fireEvent("update", index);
@@ -1905,7 +1905,7 @@
             }
         }
 
-        // Undo attachment of event
+        // Undo attachment of Events
         function removeEvent(namespacedEvent) {
             var event = namespacedEvent && namespacedEvent.split(".")[0];
             var namespace = event && namespacedEvent.substring(event.length);
@@ -1920,7 +1920,7 @@
             });
         }
 
-        // External event handling
+        // External Events handling
         function fireEvent(eventName, handleNumber, tap) {
             Object.keys(scope_Events).forEach(function(targetEvent) {
                 var eventType = targetEvent.split(".")[0];
@@ -1946,7 +1946,7 @@
             });
         }
 
-        // Split out the handle positioning logic so the Move event can use it, too
+        // Split out the handle positioning logic so the Move Events can use it, too
         function checkHandlePosition(reference, handleNumber, to, lookBackward, lookForward, getValue) {
             // For sliders with multiple handles, limit movement to the other handle.
             // Apply the margin option by adding it to the handle positions.
@@ -2193,7 +2193,7 @@
             scope_HandleNumbers.forEach(function(handleNumber) {
                 fireEvent("update", handleNumber);
 
-                // Fire the event only for handles that received a new value, as per #579
+                // Fire the Events only for handles that received a new value, as per #579
                 if (values[handleNumber] !== null && fireSetEvent) {
                     fireEvent("set", handleNumber);
                 }

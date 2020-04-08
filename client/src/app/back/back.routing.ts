@@ -2,19 +2,20 @@ import {BackComponent} from './back.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import { AuthGuard} from '../services/security/auth.guard';
+import {AllTopicsComponent} from './Topics/all.topics.component';
+import {RoleAdminGuard} from '../services/security/role.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dash',
     component: BackComponent,
+    canActivateChild: [RoleAdminGuard],
     children: [
       {path: '', component: DashboardComponent},
-      // {path: 'claim', loadChildren: './claim/claim.back.module#ClaimBackModule'},
+      {path: 'events', loadChildren: './Events/events.module#EventsModule'},
+      {path: 'topics', component: AllTopicsComponent},
     ]
-  },
-
-
+  }
 ];
 
 @NgModule({

@@ -27,6 +27,7 @@ export  class  AuthIntercepter implements HttpInterceptor {
         return  next.handle(cloned);
       } else {return next.handle(req);}
     } else {
+      this.router.navigate(['/login']);
       return next.handle(req);
     }
   }

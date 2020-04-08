@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Event} from '../../models/Event';
+import {Topic} from '../../models/Topic';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  events: Event[];
+  topics: Topic[];
 
   slidesStore: [
     {
@@ -20,8 +25,21 @@ export class HomeComponent implements OnInit {
       alt: 'Slider 2'
       title: 'Slider 2'
     }
-    ];
-  constructor() { }
+  ];
+
+  constructor(private route: ActivatedRoute) {
+    this.events = this.route.snapshot.data['events'];
+    this.topics = this.route.snapshot.data['topics'];
+    this.topics.sort((x, y) => {
+      if (x.comments.length > y.comments.length) {
+        return -1;
+      }
+      if (x.comments.length < y.comments.length) {
+        return 1;
+      }
+      return 0;
+    });
+  }
 
   ngOnInit() {
   }

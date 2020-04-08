@@ -145,7 +145,7 @@ DataTable.select.init = function ( dt ) {
 
 /*
 
-Select is a collection of API methods, event handlers, event emitters and
+Select is a collection of API methods, Events handlers, Events emitters and
 buttons (for the `Buttons` extension) for DataTables. It provides the following
 features, with an overview of how they are implemented:
 
@@ -200,7 +200,7 @@ unselected items.
 
 ## Mouse selection of items
 
-Clicking on items can be used to select items. This is done by a simple event
+Clicking on items can be used to select items. This is done by a simple Events
 handler that will select the items using the API methods.
 
  */
@@ -362,7 +362,7 @@ function enableMouseSelection ( dt )
 				var selection = window.getSelection();
 
 				// If the element that contains the selection is not in the table, we can ignore it
-				// This can happen if the developer selects text from the click event
+				// This can happen if the developer selects text from the click Events
 				if ( ! selection.anchorNode || $(selection.anchorNode).closest('table')[0] === dt.table().node() ) {
 					if ( selection !== matchSelection ) {
 						return;
@@ -435,7 +435,7 @@ function enableMouseSelection ( dt )
 }
 
 /**
- * Trigger an event on a DataTable
+ * Trigger an Events on a DataTable
  *
  * @param {DataTable.Api} api      DataTable to trigger events on
  * @param  {boolean}      selected true if selected, false if deselected
@@ -511,7 +511,7 @@ function info ( api )
 }
 
 /**
- * Initialisation of a new table. Attach event handlers and callbacks to allow
+ * Initialisation of a new table. Attach Events handlers and callbacks to allow
  * Select to operate correctly.
  *
  * This will occur _after_ the initial DataTables initialisation, although
@@ -661,7 +661,7 @@ function clear( ctx, force )
 /**
  * Select items based on the current configuration for style and items.
  *
- * @param  {object}             e    Mouse event object
+ * @param  {object}             e    Mouse Events object
  * @param  {DataTables.Api}     dt   DataTable
  * @param  {DataTable.settings} ctx  Settings object of the host DataTable
  * @param  {string}             type Items to select
@@ -846,7 +846,7 @@ apiRegister( 'select.style()', function ( style ) {
 			init( ctx );
 		}
 
-		// Add / remove mouse event handlers. They aren't required when only
+		// Add / remove mouse Events handlers. They aren't required when only
 		// API selection is available
 		var dt = new DataTable.Api( ctx );
 		disableMouseSelection( dt );

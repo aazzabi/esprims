@@ -322,7 +322,7 @@ img {
     position: relative;
     z-index: 2;
     &::after {
-        background-image: url('../img/core-img/pattern.png');
+       /* background-image: url('../img/core-img/pattern.png');*/
         background-repeat: repeat;
         content: '';
         position: absolute;
@@ -749,7 +749,7 @@ img {
     z-index: 1;
     background-color: #0c0c0c;
     border-top: 1px solid #fff;
-    background-image: url('../img/core-img/pattern.png');
+   /* background-image: url('../img/core-img/pattern.png');*/
     background-repeat: repeat;
     .single-footer-widget {
         position: relative;
@@ -1367,7 +1367,7 @@ img {
         left: 1110px;
         content: '';
         background-color: rgba(14, 14, 14, 0.8);
-        background-image: url('../img/core-img/pattern.png');
+       /* background-image: url('../img/core-img/pattern.png');*/
         z-index: 6000;
         @media #{$breakpoint-lg} {
             left: 930px;
@@ -1387,7 +1387,7 @@ img {
         left: -1110px;
         content: '';
         background-color: rgba(14, 14, 14, 0.8);
-        background-image: url('../img/core-img/pattern.png');
+       /* background-image: url('../img/core-img/pattern.png');*/
         z-index: 6000;
         @media #{$breakpoint-lg} {
             left: -930px;

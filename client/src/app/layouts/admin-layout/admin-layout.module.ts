@@ -13,6 +13,8 @@ import {MapsComponent} from '../../pages/maps/maps.component';
 import {UserProfileComponent} from '../../pages/user-profile/user-profile.component';
 import {TablesComponent} from '../../pages/tables/tables.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AddEventComponent } from 'src/app/back/Events/add-event/add-event.component';
+import { ImageUploadModule } from 'src/app/SharedComponent/image-upload/image-upload.module';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -23,14 +25,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    ImageUploadModule
   ],
   declarations: [
     DashboardComponent,
     UserProfileComponent,
     TablesComponent,
     IconsComponent,
-    MapsComponent
+    MapsComponent,
+    AddEventComponent
   ]
 })
 

@@ -1,35 +1,46 @@
-import {Component, OnInit, OnDestroy, Inject} from '@angular/core';
-import {LoginService} from '../../services/security/login.service';
-import {Router} from '@angular/router';
-import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserServices} from 'src/app/services/UserServices';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit, OnDestroy {
   model: any = {};
   public data: any = [];
-
   errorMessage: string;
-  // , @Inject(LOCAL_STORAGE) private storage: WebStorageService
-  constructor(private loginService: LoginService, private router: Router) {
+  returnUrl = '';
+
+  constructor(private userServices: UserServices, private router: Router, private route: ActivatedRoute) {
   }
+
   ngOnInit() {
+    this.returnUrl = decodeURI(this.route.snapshot.queryParams['returnUrl'] || '/');
   }
 
   ngOnDestroy() {
   }
 
   Login() {
-    this.loginService.login(this.model.email, this.model.password)
+    this.userServices.login(this.model.email, this.model.password)
       .subscribe(
         (response: any) => {
-                console.log(response);
-                this.router.navigate(['dash']);
-            } ,
-      error => console.log(error)
-    );
+          console.log(response);
+          if (this.userServices.decodeToken().user.role === 'ADMIN' ) {
+              this.router.navigateByUrl('/dash/events');
+          } else {
+              if (this.returnUrl) {
+                this.router.navigateByUrl(this.returnUrl);
+              } else {
+                this.router.navigateByUrl('/');
+                location.reload();
+              }
+          }
+        },
+        error => console.log(error)
+      );
   }
 }

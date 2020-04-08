@@ -6,14 +6,24 @@ import { BackComponent } from './back.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardLayoutModule } from './dashboardLayout/dashboard.layout.module';
 import {AuthGuard} from '../services/security/auth.guard';
-
+import {FormsModule} from '@angular/forms';
+import {AllTopicsComponent} from './Topics/all.topics.component';
+import {TopicService} from '../services/TopicService';
+import {EventsModule} from './Events/events.module';
 
 @NgModule({
   imports: [
+    CommonModule,
     BackRouting,
-    DashboardLayoutModule
+    DashboardLayoutModule,
+    FormsModule,
+    EventsModule
   ],
-  declarations: [ BackComponent, DashboardComponent],
-  providers: [AuthGuard]
+  declarations: [
+    BackComponent,
+    DashboardComponent,
+    AllTopicsComponent,
+  ],
+  providers: [AuthGuard, TopicService]
 })
 export class BackModule { }

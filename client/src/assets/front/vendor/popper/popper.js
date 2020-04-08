@@ -891,17 +891,17 @@ function attachToScrollParents(scrollParent, event, callback, scrollParents) {
 }
 
 /**
- * Setup needed event listeners used to update the popper position
+ * Setup needed Events listeners used to update the popper position
  * @method
  * @memberof Popper.Utils
  * @private
  */
 function setupEventListeners(reference, options, state, updateBound) {
-  // Resize event listener on window
+  // Resize Events listener on window
   state.updateBound = updateBound;
   window.addEventListener('resize', state.updateBound, { passive: true });
 
-  // Scroll event listener on scroll parents
+  // Scroll Events listener on scroll parents
   const scrollElement = getScrollParent(reference);
   attachToScrollParents(scrollElement, 'scroll', state.updateBound, state.scrollParents);
   state.scrollElement = scrollElement;
@@ -923,16 +923,16 @@ function enableEventListeners() {
 }
 
 /**
- * Remove event listeners used to update the popper position
+ * Remove Events listeners used to update the popper position
  * @method
  * @memberof Popper.Utils
  * @private
  */
 function removeEventListeners(reference, state) {
-  // Remove resize event listener on window
+  // Remove resize Events listener on window
   window.removeEventListener('resize', state.updateBound);
 
-  // Remove scroll event listener on scroll parents
+  // Remove scroll Events listener on scroll parents
   state.scrollParents.forEach(target => {
     target.removeEventListener('scroll', state.updateBound);
   });
@@ -2223,7 +2223,7 @@ class Popper {
 
     const eventsEnabled = this.options.eventsEnabled;
     if (eventsEnabled) {
-      // setup event listeners, they will take care of update the position in specific situations
+      // setup Events listeners, they will take care of update the position in specific situations
       this.enableEventListeners();
     }
 
