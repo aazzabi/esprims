@@ -54,13 +54,14 @@ export class AddEventComponent implements OnInit {
           fileRef.getDownloadURL().subscribe(url => {
             this.picturemap = url;
             this.event.picture = this.picturemap;
-            this.eventService.addEvent(this.event).subscribe(response => console.log(response));
-
-
+            this.eventService.addEvent(this.event).subscribe(response =>
+            {
+              console.log(response);
+              this.router.navigate(['/dash/events']);
+            });
           });
         })
       )
       .subscribe();
-    this.router.navigate(['/dash/events']);
   }
 }

@@ -118,7 +118,7 @@ export class UpdateEventComponent implements OnInit {
           })
         )
         .subscribe();
-      this.router.navigate(['/dash/allevents']);
+      this.router.navigate(['/dash/events']);
 
     }
 
